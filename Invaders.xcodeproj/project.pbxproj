@@ -1,0 +1,263 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		152F5453158BAD790074B693 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152F5452158BAD790074B693 /* UIKit.framework */; };
+		152F5455158BAD790074B693 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152F5454158BAD790074B693 /* Foundation.framework */; };
+		152F5457158BAD790074B693 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152F5456158BAD790074B693 /* CoreGraphics.framework */; };
+		152F545D158BAD790074B693 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 152F545B158BAD790074B693 /* InfoPlist.strings */; };
+		152F545F158BAD790074B693 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 152F545E158BAD790074B693 /* main.m */; };
+		152F5463158BAD790074B693 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 152F5462158BAD790074B693 /* AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		152F544E158BAD790074B693 /* Invaders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invaders.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		152F5452158BAD790074B693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		152F5454158BAD790074B693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		152F5456158BAD790074B693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		152F545A158BAD790074B693 /* Invaders-Info.plist */ = {isa = PBXFileReference; path = "Invaders-Info.plist"; sourceTree = "<group>"; };
+		152F545C158BAD790074B693 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		152F545E158BAD790074B693 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		152F5460158BAD790074B693 /* Invaders-Prefix.pch */ = {isa = PBXFileReference; path = "Invaders-Prefix.pch"; sourceTree = "<group>"; };
+		152F5461158BAD790074B693 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		152F5462158BAD790074B693 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		152F544B158BAD790074B693 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				152F5453158BAD790074B693 /* UIKit.framework in Frameworks */,
+				152F5455158BAD790074B693 /* Foundation.framework in Frameworks */,
+				152F5457158BAD790074B693 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		152F5443158BAD790074B693 = {
+			isa = PBXGroup;
+			children = (
+				152F5458158BAD790074B693 /* Invaders */,
+				152F5451158BAD790074B693 /* Frameworks */,
+				152F544F158BAD790074B693 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		152F544F158BAD790074B693 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				152F544E158BAD790074B693 /* Invaders.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		152F5451158BAD790074B693 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				152F5452158BAD790074B693 /* UIKit.framework */,
+				152F5454158BAD790074B693 /* Foundation.framework */,
+				152F5456158BAD790074B693 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		152F5458158BAD790074B693 /* Invaders */ = {
+			isa = PBXGroup;
+			children = (
+				152F5461158BAD790074B693 /* AppDelegate.h */,
+				152F5462158BAD790074B693 /* AppDelegate.m */,
+				152F5459158BAD790074B693 /* Supporting Files */,
+			);
+			path = Invaders;
+			sourceTree = "<group>";
+		};
+		152F5459158BAD790074B693 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				152F545A158BAD790074B693 /* Invaders-Info.plist */,
+				152F545B158BAD790074B693 /* InfoPlist.strings */,
+				152F545E158BAD790074B693 /* main.m */,
+				152F5460158BAD790074B693 /* Invaders-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		152F544D158BAD790074B693 /* Invaders */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 152F5466158BAD790074B693 /* Build configuration list for PBXNativeTarget "Invaders" */;
+			buildPhases = (
+				152F544A158BAD790074B693 /* Sources */,
+				152F544B158BAD790074B693 /* Frameworks */,
+				152F544C158BAD790074B693 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Invaders;
+			productName = Invaders;
+			productReference = 152F544E158BAD790074B693 /* Invaders.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		152F5445158BAD790074B693 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 152F5448158BAD790074B693 /* Build configuration list for PBXProject "Invaders" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 152F5443158BAD790074B693;
+			productRefGroup = 152F544F158BAD790074B693 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				152F544D158BAD790074B693 /* Invaders */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		152F544C158BAD790074B693 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				152F545D158BAD790074B693 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		152F544A158BAD790074B693 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				152F545F158BAD790074B693 /* main.m in Sources */,
+				152F5463158BAD790074B693 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		152F545B158BAD790074B693 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				152F545C158BAD790074B693 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		152F5464158BAD790074B693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		152F5465158BAD790074B693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		152F5467158BAD790074B693 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Invaders/Invaders-Prefix.pch";
+				INFOPLIST_FILE = "Invaders/Invaders-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		152F5468158BAD790074B693 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Invaders/Invaders-Prefix.pch";
+				INFOPLIST_FILE = "Invaders/Invaders-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		152F5448158BAD790074B693 /* Build configuration list for PBXProject "Invaders" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				152F5464158BAD790074B693 /* Debug */,
+				152F5465158BAD790074B693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		152F5466158BAD790074B693 /* Build configuration list for PBXNativeTarget "Invaders" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				152F5467158BAD790074B693 /* Debug */,
+				152F5468158BAD790074B693 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 152F5445158BAD790074B693 /* Project object */;
+}

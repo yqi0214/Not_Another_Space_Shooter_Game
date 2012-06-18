@@ -89,8 +89,7 @@
     [Player1MoveArrow[1] addTarget:self action:@selector(Player1MoveStop) forControlEvents:UIControlEventTouchUpOutside];
     
     
-    Player1Reinforcement = 100;
-    Player2Reinforcement = 100;
+   
     
     Player1ReinforcementBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BlueBar.png"]];
     Player1ReinforcementBar.frame =CGRectMake(768-15, 1024/2,
@@ -106,6 +105,22 @@
     [self.view  addSubview:Player2ReinforcementBar];
     [Player2ReinforcementBar release];
     Player2ReinforcementBar.alpha =0.5;
+    
+    Player1MaxReinforcementBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BlueBar.png"]];
+    Player1MaxReinforcementBar.frame =CGRectMake(768-15, 1024/2,
+                                              Player1MaxReinforcementBar.image.size.width, Player1MaxReinforcementBar.image.size.height);
+    [self.view  addSubview:Player1MaxReinforcementBar];
+    [Player1MaxReinforcementBar release];
+    Player1MaxReinforcementBar.alpha =0.2;
+    
+    Player2MaxReinforcementBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RedBar.png"]];
+    Player2MaxReinforcementBar.frame = CGRectMake(768-15, 1024/2-Player2MaxReinforcementBar.image.size.height,
+                                               Player2MaxReinforcementBar.image.size.width, Player2MaxReinforcementBar.image.size.height);
+    
+    [self.view  addSubview:Player2MaxReinforcementBar];
+    [Player2MaxReinforcementBar release];
+    Player2MaxReinforcementBar.alpha =0.2;
+
     
     Player1ReinforcementLabel = [[UILabel alloc]init];
     Player1ReinforcementLabel.frame = CGRectMake(768-25, 1024/2+40, 40, 40);
@@ -130,10 +145,21 @@
     TotalBulletAvilable = 5;
     TotalInvadersAvailable = 10;
     
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(UpdateGameEvents) userInfo:nil repeats:YES];
+    Player1MaxReinforcement = 100;
+    Player2MaxReinforcement = 100;
+    
+    [self NewGame];
+   
 }
 
-
+-(void)NewGame{
+    Player1Reinforcement = 100;
+    Player2Reinforcement = 100;
+  
+    Fighter.center = CGPointMake(768/2, 920);
+    gameEnd = false;
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(UpdateGameEvents) userInfo:nil repeats:YES];
+}
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     //  NSLog(@"touches began");
     UITouch *touch = [touches anyObject];
@@ -197,6 +223,12 @@
 }
 
 -(void)UpdateGameEvents{
+    if(gameEnd){
+        [timer invalidate];
+        timer = nil;
+        return;
+    }
+    
     for(int i=0; i < TotalBulletAvilable; i++){
         if(!Player1BulletsAvailable[i])
             Player1bullets[i].center = CGPointMake(Player1bullets[i].center.x, Player1bullets[i].center.y-3);
@@ -277,24 +309,38 @@
         Player1Reinforcement =0;
     if(Player2Reinforcement<0)
         Player2Reinforcement =0;
-    float r1 = (float)Player1Reinforcement/100;
-    float r2 = (float)Player2Reinforcement/100;
+    float r1 = (float)Player1Reinforcement/Player1MaxReinforcement;
+    float r2 = (float)Player2Reinforcement/Player2MaxReinforcement;
     
    
     Player2ReinforcementBar.frame = CGRectMake(768-15, 1024/2-Player2ReinforcementBar.image.size.height*r2,
                                                Player2ReinforcementBar.image.size.width, Player2ReinforcementBar.image.size.height*r2);
     Player1ReinforcementBar.frame = CGRectMake(768-15, 1024/2,
                                                Player1ReinforcementBar.image.size.width, Player1ReinforcementBar.image.size.height*r1);
-     
+    
     Player1ReinforcementLabel.text = [NSString stringWithFormat:@"%i",Player1Reinforcement];
     Player2ReinforcementLabel.text = [NSString stringWithFormat:@"%i",Player2Reinforcement];
     
+    
+    if(Player1Reinforcement==0 || Player2Reinforcement==0){
+        if(Player1Reinforcement==0){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"War is End" message:[NSString stringWithFormat:@"Red Win"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"New War",nil];
+            [alert show];
+        }
+        else if(Player2Reinforcement ==0){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"War is End" message:[NSString stringWithFormat:@"Blue Win"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"New War",nil];
+            [alert show];
+        }
+        gameEnd = TRUE;
+        return;
+    }
+    
 }
 -(void)Player1Fire{
-        NSLog(@"Fire");
-        for(int i=0; i < TotalBulletAvilable;i++){
-            if(Player1BulletsAvailable[i]){
-                Player1BulletsAvailable[i] = FALSE;
+    NSLog(@"Fire");
+    for(int i=0; i < TotalBulletAvilable;i++){
+        if(Player1BulletsAvailable[i]){
+            Player1BulletsAvailable[i] = FALSE;
                 Player1bullets[i].frame = CGRectMake(Fighter.center.x, Fighter.center.y,
                                                      Player1bullets[i].image.size.width, Player1bullets[i].image.size.height);
                 return;
@@ -316,6 +362,18 @@
     player1MoveRight = FALSE;
     player1MoveLeft = false;
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+  
+    
+    if([title isEqualToString:@"New War"])
+    {
+        [self NewGame];
+    }
+    
+}
+
 /*
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

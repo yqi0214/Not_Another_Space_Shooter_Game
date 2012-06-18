@@ -31,20 +31,29 @@
     BOOL Player2InvadersAvailable[100];
     
     
-    int Player1Reinforcement;
-    int Player2Reinforcement;
     
     UIImageView *Player1ReinforcementBar;
     UIImageView *Player2ReinforcementBar;
+    UIImageView *Player1MaxReinforcementBar;
+    UIImageView *Player2MaxReinforcementBar;
+    
     
     UILabel *Player1ReinforcementLabel;
     UILabel *Player2ReinforcementLabel;
     
     
+    int Player1Reinforcement;
+    int Player2Reinforcement;
+    
+    int Player1MaxReinforcement;
+    int Player2MaxReinforcement;
+    
     int TotalBulletAvilable;
     int TotalInvadersAvailable;
     
+    BOOL gameEnd;
     
     NSTimer *timer;
 }
+-(void)NewGame;
 @end

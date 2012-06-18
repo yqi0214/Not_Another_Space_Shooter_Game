@@ -20,6 +20,13 @@
     self.view.multipleTouchEnabled = YES;
     self.view.backgroundColor = [UIColor blackColor];
     
+    FlyImage = [[UIImage imageNamed:@"Fly.png"]retain];
+    TankImage = [[UIImage imageNamed:@"Tank.png"]retain];
+    NinjaImage = [[UIImage imageNamed:@"Ninja.png"]retain];
+    RamImage = [[UIImage imageNamed:@"Invader.png"]retain];
+    
+    
+    
     DropZone = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DropZone.png"]];
     DropZone.frame = CGRectMake(60, 60, DropZone.image.size.width, DropZone.image.size.height);
     [self.view  addSubview:DropZone];
@@ -60,7 +67,7 @@
     
     //setup buttons
     Player1FireButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    Player1FireButton.frame = CGRectMake(650, 970, 50, 50);
+    Player1FireButton.frame = CGRectMake(650, 960, 60, 60);
     // Player1FireButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
     //[FireButton setTitle:@"Fire" forState:UIControlStateNormal];
     [Player1FireButton setBackgroundImage:[UIImage imageNamed:@"FireButton"] forState:UIControlStateNormal];
@@ -71,7 +78,7 @@
     
     
     Player1MoveArrow[0] = [UIButton buttonWithType:UIButtonTypeCustom];
-    Player1MoveArrow[0].frame = CGRectMake(50, 970, 50, 50);
+    Player1MoveArrow[0].frame = CGRectMake(50, 960, 70, 60);
     [Player1MoveArrow[0] setBackgroundImage:[UIImage imageNamed:@"Arrow.png"] forState:UIControlStateNormal];
     [Player1MoveArrow[0] setBackgroundImage:[UIImage imageNamed:@"Arrow.png"] forState:UIControlStateSelected];
     Player1MoveArrow[0].transform = CGAffineTransformMakeRotation(M_PI);
@@ -82,7 +89,7 @@
     
     
     Player1MoveArrow[1] = [UIButton buttonWithType:UIButtonTypeCustom];
-    Player1MoveArrow[1].frame = CGRectMake(130, 970, 50, 50);
+    Player1MoveArrow[1].frame = CGRectMake(130, 960, 70, 60);
     [Player1MoveArrow[1] setBackgroundImage:[UIImage imageNamed:@"Arrow.png"] forState:UIControlStateNormal];
     [Player1MoveArrow[1] setBackgroundImage:[UIImage imageNamed:@"Arrow.png"] forState:UIControlStateSelected];
     [self.view addSubview:Player1MoveArrow[1]];
@@ -90,6 +97,21 @@
     [Player1MoveArrow[1] addTarget:self action:@selector(Player1MoveStop) forControlEvents:UIControlEventTouchUpInside];
     [Player1MoveArrow[1] addTarget:self action:@selector(Player1MoveStop) forControlEvents:UIControlEventTouchUpOutside];
     
+    
+    //setup invader selection
+    for(int i =0 ;i < 4;i++){
+        Player2InvaderSelection[i] = [[UIImageView alloc] init];
+        Player2InvaderSelection[i].transform = CGAffineTransformMakeRotation(M_PI);
+        Player2InvaderSelection[i].frame = CGRectMake(5 +55*i,5,50, 50);
+        [self.view  addSubview:Player2InvaderSelection[i]];
+        [Player2InvaderSelection[i] release];
+        Player2InvaderSelection[i].transform = CGAffineTransformMakeRotation(M_PI);
+    }
+    player2invaderselect = Fly;
+    Player2InvaderSelection[0].image = FlyImage;
+    Player2InvaderSelection[1].image = RamImage;
+    Player2InvaderSelection[2].image = TankImage;
+    Player2InvaderSelection[3].image = NinjaImage;
     
    
     
@@ -144,7 +166,7 @@
     
     
     
-    TotalBulletAvilable = 5;
+    TotalBulletAvilable = 10;
     TotalInvadersAvailable = 10;
     
     Player1MaxReinforcement = 100;
@@ -178,46 +200,71 @@
     //CGPoint touchLocation = [touch locationInView:self.view];
     // NSLog(@"touch at (%i,%i)",(int)touchLocation.x,(int)touchLocation.y);
     
-//    NSSet *allTouches = [event allTouches];
-//    NSLog(@"touches number:%i",allTouches.count);
-//    for(UITouch *touch in allTouches){
-        
-        CGPoint touchLocation = [touch locationInView:self.view];
-        NSLog(@"touch at (%i,%i)",(int)touchLocation.x,(int)touchLocation.y);
-        
+    //    NSSet *allTouches = [event allTouches];
+    //    NSLog(@"touches number:%i",allTouches.count);
+    //    for(UITouch *touch in allTouches){
+    
+    
+    
+    CGPoint touchLocation = [touch locationInView:self.view];
+    NSLog(@"touch at (%i,%i)",(int)touchLocation.x,(int)touchLocation.y);
+    
+    //invader selection
+    for(int i=0; i <4; i++)
+        if(CGRectContainsPoint(Player2InvaderSelection[i].frame, touchLocation))
+            player2invaderselect = Fly+i;
+    
     if(CGRectContainsPoint(DropZone.frame, touchLocation)){
         
         
         /*
-        if(CGRectContainsPoint(Player1MoveArrow[0].frame, touchLocation)){
-            NSLog(@"Move Left");
-            player1MoveLeft = true;
-            player1MoveRight = false;
-            return;
-            //Fighter.center = CGPointMake(Fighter.center.x-2, Fighter.center.y);
-        }
+         if(CGRectContainsPoint(Player1MoveArrow[0].frame, touchLocation)){
+         NSLog(@"Move Left");
+         player1MoveLeft = true;
+         player1MoveRight = false;
+         return;
+         //Fighter.center = CGPointMake(Fighter.center.x-2, Fighter.center.y);
+         }
+         
+         else if(CGRectContainsPoint(Player1MoveArrow[1].frame, touchLocation)){
+         NSLog(@"Move Right");
+         player1MoveRight = true;
+         player1MoveLeft = false;
+         return;
+         //Fighter.center = CGPointMake(Fighter.center.x+2, Fighter.center.y);
+         }*/
+        // else{
+        bool NoOneThere = TRUE;
+        for(int i =0; i < TotalInvadersAvailable; i++)
+            if(CGRectContainsPoint(Player2Invaders[i].frame, touchLocation))
+                NoOneThere = false;
         
-        else if(CGRectContainsPoint(Player1MoveArrow[1].frame, touchLocation)){
-            NSLog(@"Move Right");
-            player1MoveRight = true;
-            player1MoveLeft = false;
-            return;
-            //Fighter.center = CGPointMake(Fighter.center.x+2, Fighter.center.y);
-        }*/
-       // else{
-            bool NoOneThere = TRUE;
-            for(int i =0; i < TotalInvadersAvailable; i++)
-                if(CGRectContainsPoint(Player2Invaders[i].frame, touchLocation))
-                    NoOneThere = false;
-                   
-            
-            if(NoOneThere){
-                for(int i =0; i < TotalInvadersAvailable; i++){
-                    if (!Player2InvaderData[i].Active){
-                        NSLog(@"New Invader");
+        
+        if(NoOneThere){
+            for(int i =0; i < TotalInvadersAvailable; i++){
+                if (!Player2InvaderData[i].Active){
+                    NSLog(@"New Invader");
+                    
+                    // Player2InvaderData[i].Active = TRUE;
+                    //[Player2InvaderData[i] ActiveAndChangeTypeTo:arc4random()%4];
+                    [Player2InvaderData[i] ActiveAndChangeTypeTo:player2invaderselect];
+                        if(Player2InvaderData[i].Type ==Fly){
+                            Player2Invaders[i].image = FlyImage;
+                            Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
+                        }
+                        else if(Player2InvaderData[i].Type ==Ninja){
+                            Player2Invaders[i].image = NinjaImage;
+                            Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
+                        }
+                        else if(Player2InvaderData[i].Type ==Ram){
+                            Player2Invaders[i].image = RamImage;
+                            Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
+                        }
+                        else if(Player2InvaderData[i].Type ==Tank){
+                            Player2Invaders[i].image = TankImage;
+                            Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
+                        }
                         Player2Invaders[i].center =CGPointMake(touchLocation.x, touchLocation.y);
-                       // Player2InvaderData[i].Active = TRUE;
-                        [Player2InvaderData[i] ActiveAndChangeTypeTo:arc4random()%5];
                        // [Player2InvaderData[i] ActiveAndChangeTypeTo:Ram];
                         break;
                         
@@ -247,7 +294,7 @@
         if(Player2InvaderData[i].Active)
             count++;
         
-    NSLog(@"Invader Count:%i",count);
+   // NSLog(@"Invader Count:%i",count);
     for(int i=0; i < TotalBulletAvilable; i++){
         if(!Player1BulletsAvailable[i])
             Player1bullets[i].center = CGPointMake(Player1bullets[i].center.x, Player1bullets[i].center.y-3);
@@ -256,9 +303,21 @@
             if(CGRectIntersectsRect( Player2Invaders[j].frame,Player1bullets[i].frame) && Player1bullets[i].center.x>0){
                 Player1bullets[i].center =CGPointMake(100,-200);
                 Player1BulletsAvailable[i] = TRUE;
-                Player2Invaders[j].center = CGPointMake(-200, -200);
-                Player2InvaderData[j].Active = FALSE;
-                Player2Reinforcement -=1;
+                //invader lose hp
+                Player2InvaderData[j].HP -=1;
+                if(Player2InvaderData[j].HP<1){
+                    Player2Invaders[j].center = CGPointMake(-200, -200);
+                    Player2InvaderData[j].Active = FALSE;
+                    
+                    if(Player2InvaderData[j].Type==Fly)
+                        Player2Reinforcement -= 1;
+                    else if(Player2InvaderData[j].Type == Ram)
+                        Player2Reinforcement -= 2;
+                    else if(Player2InvaderData[j].Type == Tank)
+                        Player2Reinforcement -= 3;
+                    else if(Player2InvaderData[j].Type == Ninja)
+                        Player2Reinforcement -= 5;
+                }
             }
         }
         //if bullets out of the border
@@ -272,9 +331,9 @@
     }
     
     if(player1MoveLeft == true && Fighter.center.x > 60+Fighter.image.size.width/2)
-        Fighter.center = CGPointMake(Fighter.center.x-2, Fighter.center.y);
+        Fighter.center = CGPointMake(Fighter.center.x-3, Fighter.center.y);
     if(player1MoveRight ==true && Fighter.center.x < 708-Fighter.image.size.width/2)
-        Fighter.center = CGPointMake(Fighter.center.x+2, Fighter.center.y);
+        Fighter.center = CGPointMake(Fighter.center.x+3, Fighter.center.y);
     
     //Invader movement
     [self InvaderMovement];
@@ -313,6 +372,12 @@
         gameEnd = TRUE;
         return;
     }
+    for(int i=0; i < 4;i++){
+        if(player2invaderselect ==i)
+            Player2InvaderSelection[i].alpha =0.3;
+        else
+            Player2InvaderSelection[i].alpha =1;
+    }
     
 }
 -(void)InvaderMovement{
@@ -329,13 +394,13 @@
             int randmove =0;
             if(Player2InvaderData[i].Type==Ram){
                 
-                if(i%2==0 && Fighter.center.x > Player2Invaders[i].center.x)
+                if(Fighter.center.x > Player2Invaders[i].center.x)
                     randmove = 1;
-                else if(i%2==0 && Fighter.center.x < Player2Invaders[i].center.x)
+                else if(Fighter.center.x < Player2Invaders[i].center.x)
                     randmove =-1;
             }
             else if(Player2InvaderData[i].Type == Fly){
-                randmove = -2;
+                randmove = -4;
                 if(arc4random()%2==0)
                     randmove *= -1;
                 if(Player2Invaders[i].center.x+randmove < 60+Player2Invaders[i].image.size.width/2)
@@ -351,7 +416,11 @@
                 // self.view.backgroundColor = [UIColor redColor];
                 Player2Invaders[i].center = CGPointMake(-200, -200);
                 Player2InvaderData[i].Active = FALSE;
-                Player1Reinforcement -= 20;
+                
+                if(Player2InvaderData[i].Type==Fly)
+                    Player1Reinforcement -= 1;
+                else
+                    Player1Reinforcement -= 20;
             }
             
             

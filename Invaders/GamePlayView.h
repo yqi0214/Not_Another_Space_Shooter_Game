@@ -13,6 +13,9 @@
     UIImageView *Bound;
     UIImageView *DropZone;
     
+    
+    int player2invaderselect;
+    UIImageView *Player2InvaderSelection[4];
     UIImageView *Player2Invaders[100];
     Invader *Player2InvaderData[100];
    // UIImageView *Invaderss;
@@ -32,7 +35,10 @@
     BOOL Player1BulletsAvailable[100];
     //BOOL Player2InvadersAvailable[100];
     
-    
+    UIImage *FlyImage;
+    UIImage *TankImage;
+    UIImage *NinjaImage;
+    UIImage *RamImage;
     
     UIImageView *Player1ReinforcementBar;
     UIImageView *Player2ReinforcementBar;

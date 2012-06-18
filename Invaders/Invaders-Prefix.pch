@@ -13,4 +13,4 @@
     #import <Foundation/Foundation.h>
 #endif
 
-typedef enum { Fly, Ram, Ninja, Tank, MotherShip } InvaderType;
+typedef enum { Fly, Ram,Tank, Ninja, MotherShip } InvaderType;

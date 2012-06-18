@@ -24,6 +24,9 @@
 		152F54A9158E85840074B693 /* Bound.png in Resources */ = {isa = PBXBuildFile; fileRef = 152F54A8158E85840074B693 /* Bound.png */; };
 		152F54AC158E933F0074B693 /* DropZone.png in Resources */ = {isa = PBXBuildFile; fileRef = 152F54AB158E933F0074B693 /* DropZone.png */; };
 		152F54B7158EB0020074B693 /* Invader.m in Sources */ = {isa = PBXBuildFile; fileRef = 152F54B6158EB0020074B693 /* Invader.m */; };
+		15597940158FA37E0024F600 /* Fly.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559793F158FA37E0024F600 /* Fly.png */; };
+		15597944158FA6430024F600 /* Ninja.png in Resources */ = {isa = PBXBuildFile; fileRef = 15597942158FA6430024F600 /* Ninja.png */; };
+		15597945158FA6430024F600 /* Tank.png in Resources */ = {isa = PBXBuildFile; fileRef = 15597943158FA6430024F600 /* Tank.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		152F54AB158E933F0074B693 /* DropZone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DropZone.png; sourceTree = "<group>"; };
 		152F54B5158EB0020074B693 /* Invader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Invader.h; sourceTree = "<group>"; };
 		152F54B6158EB0020074B693 /* Invader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Invader.m; sourceTree = "<group>"; };
+		1559793F158FA37E0024F600 /* Fly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fly.png; sourceTree = "<group>"; };
+		15597942158FA6430024F600 /* Ninja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ninja.png; sourceTree = "<group>"; };
+		15597943158FA6430024F600 /* Tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tank.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +128,9 @@
 		152F5469158BADBA0074B693 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				15597942158FA6430024F600 /* Ninja.png */,
+				15597943158FA6430024F600 /* Tank.png */,
+				1559793F158FA37E0024F600 /* Fly.png */,
 				152F54AB158E933F0074B693 /* DropZone.png */,
 				152F54A8158E85840074B693 /* Bound.png */,
 				152F54A2158CFBB00074B693 /* RedBar.png */,
@@ -195,6 +204,9 @@
 				152F54A3158CFBB00074B693 /* RedBar.png in Resources */,
 				152F54A9158E85840074B693 /* Bound.png in Resources */,
 				152F54AC158E933F0074B693 /* DropZone.png in Resources */,
+				15597940158FA37E0024F600 /* Fly.png in Resources */,
+				15597944158FA6430024F600 /* Ninja.png in Resources */,
+				15597945158FA6430024F600 /* Tank.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

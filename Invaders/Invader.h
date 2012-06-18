@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Invader : NSObject
+@interface Invader : NSObject{
+    BOOL Active;
+    int Type;
+    int HP;
+    int Speed;
+}
+-(id)initWithType:(int)type;
+-(void)ActiveAndChangeTypeTo:(int)type;
 
+@property (nonatomic,assign) BOOL Active;
+@property (nonatomic,assign) int Type;
+@property (nonatomic,assign) int HP;
+@property (nonatomic,assign) int Speed;
 @end

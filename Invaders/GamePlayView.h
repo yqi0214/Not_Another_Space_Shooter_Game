@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Invader.h"
 
 @interface GamePlayView: UIViewController{
     UIImageView *Bound;
     UIImageView *DropZone;
     
-    UIImageView *Invaders[100];
+    UIImageView *Player2Invaders[100];
+    Invader *Player2InvaderData[100];
    // UIImageView *Invaderss;
     UIImageView *Fighter;
     
@@ -28,7 +30,7 @@
     
     
     BOOL Player1BulletsAvailable[100];
-    BOOL Player2InvadersAvailable[100];
+    //BOOL Player2InvadersAvailable[100];
     
     
     
@@ -56,4 +58,5 @@
     NSTimer *timer;
 }
 -(void)NewGame;
+-(void)InvaderMovement;
 @end

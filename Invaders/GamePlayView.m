@@ -465,9 +465,10 @@
     for(int i=0; i < TotalBulletAvilable;i++){
         if(Player1BulletsAvailable[i]){
             Player1BulletsAvailable[i] = FALSE;
-                Player1bullets[i].frame = CGRectMake(Fighter.center.x, Fighter.center.y,
-                                                     Player1bullets[i].image.size.width, Player1bullets[i].image.size.height);
-                return;
+               // Player1bullets[i].frame = CGRectMake(Fighter.center.x, Fighter.center.y,
+                 //                                    Player1bullets[i].image.size.width, Player1bullets[i].image.size.height);
+            Player1bullets[i].center =Fighter.center;
+            return;
             }
         }
 }

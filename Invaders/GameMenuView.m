@@ -34,7 +34,7 @@
     gameTitle = [[UILabel alloc]init];
     gameTitle.frame = CGRectMake(0, 0, 230, 50);
     gameTitle.center = CGPointMake(768/2, 50);
-    gameTitle.textColor = [UIColor blackColor];
+    gameTitle.textColor = [UIColor whiteColor];
     gameTitle.backgroundColor = [UIColor clearColor];
     gameTitle.font = [UIFont boldSystemFontOfSize:50];
     gameTitle.text = @"Invaders";

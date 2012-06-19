@@ -7,7 +7,7 @@
 //
 
 #import "GamePlayView.h"
-
+#import "AppDelegate.h"
 @interface GamePlayView ()
 
 @end
@@ -18,17 +18,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view.multipleTouchEnabled = YES;
-    self.view.backgroundColor = [UIColor blackColor];
+   // self.view.backgroundColor = [UIColor blackColor];
     
     FlyImage = [[UIImage imageNamed:@"Fly.png"]retain];
     TankImage = [[UIImage imageNamed:@"Tank.png"]retain];
     NinjaImage = [[UIImage imageNamed:@"Ninja.png"]retain];
     RamImage = [[UIImage imageNamed:@"Invader.png"]retain];
     
-    
+    backGround = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SpaceBackGround.png"]];
+    backGround.frame = CGRectMake(0, -1024, backGround.image.size.width, backGround.image.size.height);
+    [self.view  addSubview:backGround];
+    [backGround release];
     
     DropZone = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"DropZone.png"]];
-    DropZone.frame = CGRectMake(60, 60, DropZone.image.size.width, DropZone.image.size.height);
+    DropZone.frame = CGRectMake(60, 65, DropZone.image.size.width, DropZone.image.size.height);
     [self.view  addSubview:DropZone];
     [DropZone release];
     DropZone.alpha =0.3;
@@ -98,11 +101,20 @@
     [Player1MoveArrow[1] addTarget:self action:@selector(Player1MoveStop) forControlEvents:UIControlEventTouchUpOutside];
     
     
+    //setup back to menu button
+    backToMenu = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    backToMenu.frame = CGRectMake(768-70, 1024/2, 90, 20);
+    backToMenu.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+    [backToMenu setTitle:@"Back To Menu" forState:UIControlStateNormal];
+    backToMenu.transform = CGAffineTransformMakeRotation(M_PI_2);
+    [self.view addSubview:backToMenu];
+    [backToMenu addTarget:self action:@selector(BackToMenu) forControlEvents:UIControlEventTouchDown];
+    
     //setup invader selection
     for(int i =0 ;i < 4;i++){
         Player2InvaderSelection[i] = [[UIImageView alloc] init];
         Player2InvaderSelection[i].transform = CGAffineTransformMakeRotation(M_PI);
-        Player2InvaderSelection[i].frame = CGRectMake(5 +55*i,5,50, 50);
+        Player2InvaderSelection[i].frame = CGRectMake(10 +60*i,5,50, 50);
         [self.view  addSubview:Player2InvaderSelection[i]];
         [Player2InvaderSelection[i] release];
         Player2InvaderSelection[i].transform = CGAffineTransformMakeRotation(M_PI);
@@ -192,7 +204,13 @@
     
     
     gameEnd = false;
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(UpdateGameEvents) userInfo:nil repeats:YES];
+    gamePause = false;
+    gameTimer = [[NSTimer scheduledTimerWithTimeInterval:2.0/60.0 target:self selector:@selector(UpdateGameEvents) userInfo:nil repeats:YES]retain];
+}
+-(void)ResumeGame{
+    gamePause = false;
+    
+    gameTimer = [[NSTimer scheduledTimerWithTimeInterval:2.0/60.0 target:self selector:@selector(UpdateGameEvents) userInfo:nil repeats:YES]retain];
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     //  NSLog(@"touches began");
@@ -284,11 +302,14 @@
 }
 
 -(void)UpdateGameEvents{
-    if(gameEnd){
-        [timer invalidate];
-        timer = nil;
+    if(gameEnd || gamePause){
+        [gameTimer invalidate];
+        gameTimer = nil;
         return;
     }
+    backGround.frame = CGRectMake(0,backGround.frame.origin.y+1, backGround.image.size.width, backGround.image.size.height);
+    if(backGround.frame.origin.y>0)
+        backGround.frame = CGRectMake(0, -1024, backGround.image.size.width, backGround.image.size.height);
     int count=0;
     for(int i=0; i < 100;i++)
         if(Player2InvaderData[i].Active)
@@ -374,9 +395,9 @@
     }
     for(int i=0; i < 4;i++){
         if(player2invaderselect ==i)
-            Player2InvaderSelection[i].alpha =0.3;
-        else
             Player2InvaderSelection[i].alpha =1;
+        else
+            Player2InvaderSelection[i].alpha =0.15;
     }
     
 }
@@ -419,8 +440,13 @@
                 
                 if(Player2InvaderData[i].Type==Fly)
                     Player1Reinforcement -= 1;
-                else
+                else if(Player2InvaderData[i].Type==Ram)
                     Player1Reinforcement -= 20;
+                else if(Player2InvaderData[i].Type==Ninja)
+                    Player1Reinforcement -= 10;
+                else if(Player2InvaderData[i].Type==Tank)
+                    Player1Reinforcement -= 20;
+                
             }
             
             
@@ -460,7 +486,14 @@
     player1MoveRight = FALSE;
     player1MoveLeft = false;
 }
-
+-(void)BackToMenu{
+ 
+    gamePause = true;
+    AppDelegate* delegateroot = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    RootViewController *root = [delegateroot GetRootViewController];
+   
+    [root BackToMenu];
+}
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
   

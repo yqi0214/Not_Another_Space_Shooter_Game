@@ -27,6 +27,9 @@
 		15597940158FA37E0024F600 /* Fly.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559793F158FA37E0024F600 /* Fly.png */; };
 		15597944158FA6430024F600 /* Ninja.png in Resources */ = {isa = PBXBuildFile; fileRef = 15597942158FA6430024F600 /* Ninja.png */; };
 		15597945158FA6430024F600 /* Tank.png in Resources */ = {isa = PBXBuildFile; fileRef = 15597943158FA6430024F600 /* Tank.png */; };
+		155979541590D4DA0024F600 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 155979531590D4DA0024F600 /* RootViewController.m */; };
+		1559795C1590D54D0024F600 /* GameMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1559795B1590D54D0024F600 /* GameMenuView.m */; };
+		1559795E1590DA670024F600 /* SpaceBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559795D1590DA670024F600 /* SpaceBackGround.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,11 @@
 		1559793F158FA37E0024F600 /* Fly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fly.png; sourceTree = "<group>"; };
 		15597942158FA6430024F600 /* Ninja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ninja.png; sourceTree = "<group>"; };
 		15597943158FA6430024F600 /* Tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tank.png; sourceTree = "<group>"; };
+		155979521590D4DA0024F600 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		155979531590D4DA0024F600 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		1559795A1590D54D0024F600 /* GameMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuView.h; sourceTree = "<group>"; };
+		1559795B1590D54D0024F600 /* GameMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuView.m; sourceTree = "<group>"; };
+		1559795D1590DA670024F600 /* SpaceBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpaceBackGround.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +112,12 @@
 			children = (
 				152F5461158BAD790074B693 /* AppDelegate.h */,
 				152F5462158BAD790074B693 /* AppDelegate.m */,
+				155979521590D4DA0024F600 /* RootViewController.h */,
+				155979531590D4DA0024F600 /* RootViewController.m */,
 				152F54B5158EB0020074B693 /* Invader.h */,
 				152F54B6158EB0020074B693 /* Invader.m */,
+				1559795A1590D54D0024F600 /* GameMenuView.h */,
+				1559795B1590D54D0024F600 /* GameMenuView.m */,
 				152F5472158BADC40074B693 /* GamePlayView.h */,
 				152F5473158BADC40074B693 /* GamePlayView.m */,
 				152F5459158BAD790074B693 /* Supporting Files */,
@@ -128,6 +140,7 @@
 		152F5469158BADBA0074B693 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1559795D1590DA670024F600 /* SpaceBackGround.png */,
 				15597942158FA6430024F600 /* Ninja.png */,
 				15597943158FA6430024F600 /* Tank.png */,
 				1559793F158FA37E0024F600 /* Fly.png */,
@@ -207,6 +220,7 @@
 				15597940158FA37E0024F600 /* Fly.png in Resources */,
 				15597944158FA6430024F600 /* Ninja.png in Resources */,
 				15597945158FA6430024F600 /* Tank.png in Resources */,
+				1559795E1590DA670024F600 /* SpaceBackGround.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +235,8 @@
 				152F5463158BAD790074B693 /* AppDelegate.m in Sources */,
 				152F5474158BADC40074B693 /* GamePlayView.m in Sources */,
 				152F54B7158EB0020074B693 /* Invader.m in Sources */,
+				155979541590D4DA0024F600 /* RootViewController.m in Sources */,
+				1559795C1590D54D0024F600 /* GameMenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GamePlayView.h"
+#import "RootViewController.h"
 @interface AppDelegate : UIResponder <UIApplicationDelegate>{
-    GamePlayView* root;
+    RootViewController *root;
 }
-
+-(RootViewController*)GetRootViewController;
 @property (strong, nonatomic) UIWindow *window;
 
 @end

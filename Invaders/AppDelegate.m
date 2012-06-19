@@ -25,7 +25,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    root = [GamePlayView new];
+    root = [RootViewController new];
     
     self.window.rootViewController = root;
     [root release];
@@ -33,6 +33,9 @@
     
     
     return YES;
+}
+-(RootViewController*)GetRootViewController{
+    return root;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

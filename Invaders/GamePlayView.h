@@ -10,6 +10,7 @@
 #import "Invader.h"
 
 @interface GamePlayView: UIViewController{
+    UIImageView *backGround;
     UIImageView *Bound;
     UIImageView *DropZone;
     
@@ -23,6 +24,8 @@
     
     UIButton *Player1MoveArrow[2];
     UIButton *Player1FireButton;
+    
+    UIButton *backToMenu;
     
     UIImageView *Player1bullets[100];
     //UIImageView *Player1bullet;
@@ -60,9 +63,11 @@
     int TotalInvadersAvailable;
     
     BOOL gameEnd;
+    BOOL gamePause;
     
-    NSTimer *timer;
+    NSTimer *gameTimer;
 }
 -(void)NewGame;
--(void)InvaderMovement;
+-(void)ResumeGame;
+//-(void)InvaderMovement;
 @end

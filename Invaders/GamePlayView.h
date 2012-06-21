@@ -34,6 +34,7 @@
     bool player1MoveRight;
     UIButton *Player1MoveArrow[2];
     UIButton *Player1FireButton;
+    UIButton *Player1AltFireButton;
     UIImageView *Player1Pad;
     CGPoint Player1PadOriginPoint;
     
@@ -51,6 +52,8 @@
     int Player2Reinforcement;
     int Player1MaxReinforcement;
     int Player2MaxReinforcement;
+    
+    UIImageView *Block;
     
     //energy bars
     UIImageView *Player1EnergyBar;

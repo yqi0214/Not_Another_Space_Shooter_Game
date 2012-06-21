@@ -79,6 +79,16 @@
     [self.view addSubview:Player1FireButton];
     [Player1FireButton addTarget:self action:@selector(Player1Fire) forControlEvents:UIControlEventTouchDown];
     
+    Player1AltFireButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    Player1AltFireButton.frame = CGRectMake(550, 960, 60, 60);
+    // Player1FireButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+    //[FireButton setTitle:@"Fire" forState:UIControlStateNormal];
+    [Player1AltFireButton setBackgroundImage:[UIImage imageNamed:@"AltFireButton"] forState:UIControlStateNormal];
+    [Player1AltFireButton setBackgroundImage:[UIImage imageNamed:@"AltFireButton"] forState:UIControlStateSelected];
+    // Player1FireButton
+    [self.view addSubview:Player1AltFireButton];
+    [Player1AltFireButton addTarget:self action:@selector(Player1AltFire) forControlEvents:UIControlEventTouchDown];
+    
     
     Player1MoveArrow[0] = [UIButton buttonWithType:UIButtonTypeCustom];
     Player1MoveArrow[0].frame = CGRectMake(50, 960, 70, 60);
@@ -140,14 +150,14 @@
    
     //setup reinforcement bars
     Player1ReinforcementBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BlueBar.png"]];
-    Player1ReinforcementBar.frame =CGRectMake(768-15, 1024/2,
+    Player1ReinforcementBar.frame =CGRectMake(768-15, 1024/2+30,
                                               Player1ReinforcementBar.image.size.width, Player1ReinforcementBar.image.size.height);
     [self.view  addSubview:Player1ReinforcementBar];
     [Player1ReinforcementBar release];
     Player1ReinforcementBar.alpha =0.5;
     
     Player2ReinforcementBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RedBar.png"]];
-    Player2ReinforcementBar.frame = CGRectMake(768-15, 1024/2-Player2ReinforcementBar.image.size.height,
+    Player2ReinforcementBar.frame = CGRectMake(768-15, 1024/2-Player2ReinforcementBar.image.size.height-30,
                                                Player2ReinforcementBar.image.size.width, Player2ReinforcementBar.image.size.height);
     
     [self.view  addSubview:Player2ReinforcementBar];
@@ -155,14 +165,14 @@
     Player2ReinforcementBar.alpha =0.5;
     
     Player1MaxReinforcementBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BlueBar.png"]];
-    Player1MaxReinforcementBar.frame =CGRectMake(768-15, 1024/2,
+    Player1MaxReinforcementBar.frame =CGRectMake(768-15, 1024/2+30,
                                               Player1MaxReinforcementBar.image.size.width, Player1MaxReinforcementBar.image.size.height);
     [self.view  addSubview:Player1MaxReinforcementBar];
     [Player1MaxReinforcementBar release];
     Player1MaxReinforcementBar.alpha =0.2;
     
     Player2MaxReinforcementBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RedBar.png"]];
-    Player2MaxReinforcementBar.frame = CGRectMake(768-15, 1024/2-Player2MaxReinforcementBar.image.size.height,
+    Player2MaxReinforcementBar.frame = CGRectMake(768-15, 1024/2-Player2MaxReinforcementBar.image.size.height-30,
                                                Player2MaxReinforcementBar.image.size.width, Player2MaxReinforcementBar.image.size.height);
     
     [self.view  addSubview:Player2MaxReinforcementBar];
@@ -180,7 +190,7 @@
     
     
     Player2ReinforcementLabel = [[UILabel alloc]init];
-    Player2ReinforcementLabel.frame = CGRectMake(768-25, 1024/2-40, 40, 40);
+    Player2ReinforcementLabel.frame = CGRectMake(768-25, 1024/2-70, 40, 40);
     Player2ReinforcementLabel.textColor = [UIColor blackColor];
     Player2ReinforcementLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:Player2ReinforcementLabel];
@@ -190,37 +200,42 @@
     
     //setup energy bars
     Player1EnergyBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"YellowBar.png"]];
-    Player1EnergyBar.frame =CGRectMake(768-30, 1024/2,
+    Player1EnergyBar.frame =CGRectMake(768-25, 1024/2+30,
                                               Player1EnergyBar.image.size.width, Player1EnergyBar.image.size.height);
     [self.view  addSubview:Player1EnergyBar];
     [Player1EnergyBar release];
     Player1EnergyBar.alpha =0.5;
     
+    Player1MaxEnergyBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"YellowBar.png"]];
+    Player1MaxEnergyBar.frame =CGRectMake(768-25, 1024/2+30,
+                                          Player1MaxEnergyBar.image.size.width, Player1MaxEnergyBar.image.size.height);
+    [self.view addSubview:Player1MaxEnergyBar];
+    [Player1MaxEnergyBar release];
+    Player1MaxEnergyBar.alpha =0.2;
+    
     Player2EnergyBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"YellowBar.png"]];
-    Player2EnergyBar.frame = CGRectMake(768-30, 1024/2-Player2EnergyBar.image.size.height,
+    Player2EnergyBar.frame = CGRectMake(768-25, 1024/2-Player2EnergyBar.image.size.height-30,
                                                Player2EnergyBar.image.size.width, Player2EnergyBar.image.size.height);
     
     [self.view  addSubview:Player2EnergyBar];
     [Player2EnergyBar release];
     Player2EnergyBar.alpha =0.5;
     
-    Player1MaxEnergyBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"YellowBar.png"]];
-    Player1MaxEnergyBar.frame =CGRectMake(768-30, 1024/2,
-                                                 Player1MaxEnergyBar.image.size.width, Player1MaxEnergyBar.image.size.height);
-    [self.view addSubview:Player1MaxEnergyBar];
-    [Player1MaxEnergyBar release];
-    Player1MaxEnergyBar.alpha =0.2;
-    
     Player2MaxEnergyBar = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"YellowBar.png"]];
-    Player2MaxEnergyBar.frame = CGRectMake(768-30, 1024/2-Player2MaxEnergyBar.image.size.height,
+    Player2MaxEnergyBar.frame = CGRectMake(768-25, 1024/2-Player2MaxEnergyBar.image.size.height-30,
                                                   Player2MaxEnergyBar.image.size.width, Player2MaxEnergyBar.image.size.height);
     
     [self.view  addSubview:Player2MaxEnergyBar];
     [Player2MaxEnergyBar release];
     Player2MaxEnergyBar.alpha =0.2;
     
-    
-    
+    //setup block
+    Block = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BlackBlock.png"]];
+    Block.frame = CGRectMake(768-30,1024/2,Block.image.size.width, Block.image.size.height);
+    Block.center = CGPointMake(768-25+Block.image.size.width/2, 1024/2);
+    [self.view  addSubview:Block];
+    [Block release];
+   
     TotalBulletAvilable = 50;
     TotalInvadersAvailable = 50;
     
@@ -452,10 +467,10 @@
     float e1 = (float)player1Energy/player1MaxEnergy;
     float e2 = (float)player2Energy/player2MaxEnergy;
     
-    Player2EnergyBar.frame = CGRectMake(768-30, 1024/2-Player2EnergyBar.image.size.height*e2,
+    Player2EnergyBar.frame = CGRectMake(768-25, 1024/2-Player2EnergyBar.image.size.height*e2-30,
                                                Player2EnergyBar.image.size.width, Player2EnergyBar.image.size.height*e2);
     
-    Player1EnergyBar.frame = CGRectMake(768-30, 1024/2,
+    Player1EnergyBar.frame = CGRectMake(768-25, 1024/2+30,
                                                Player1EnergyBar.image.size.width, Player1EnergyBar.image.size.height*e1);
 
     
@@ -477,10 +492,10 @@
                                                    Player1ReinforcementBar.image.size.width, Player1ReinforcementBar.frame.size.height-1);
    */
        
-    Player2ReinforcementBar.frame = CGRectMake(768-15, 1024/2-Player2ReinforcementBar.image.size.height*r2,
+    Player2ReinforcementBar.frame = CGRectMake(768-15, 1024/2-Player2ReinforcementBar.image.size.height*r2-30,
                                                Player2ReinforcementBar.image.size.width, Player2ReinforcementBar.image.size.height*r2);
     
-    Player1ReinforcementBar.frame = CGRectMake(768-15, 1024/2,
+    Player1ReinforcementBar.frame = CGRectMake(768-15, 1024/2+30,
                                                Player1ReinforcementBar.image.size.width, Player1ReinforcementBar.image.size.height*r1);
         
     
@@ -562,9 +577,9 @@
 }
 -(void)ReplenishEnergy{
     if(player1Energy <100)
-        player1Energy += 0.25;
+        player1Energy += 0.3;
     if(player2Energy <100)
-        player2Energy += 0.25;
+        player2Energy += 0.3;
 }
 -(void)Player1Fire{
     NSLog(@"Fire");
@@ -579,6 +594,32 @@
                 return;
             }
         }
+}
+-(void)Player1AltFire{
+    if(player1Energy >= 30){
+        int bulletfired =0;
+       
+        for(int i=0; i < TotalBulletAvilable;i++){
+            if(Player1BulletsAvailable[i]){
+                Player1BulletsAvailable[i] = FALSE;
+                
+               if(bulletfired==0)
+                   Player1bullets[i].center =Fighter.center;
+                else if(bulletfired ==1)
+                    Player1bullets[i].center = CGPointMake(Fighter.center.x+5, Fighter.center.y);
+                else if(bulletfired ==2)
+                    Player1bullets[i].center = CGPointMake(Fighter.center.x+10, Fighter.center.y);
+                else if(bulletfired ==3)
+                    Player1bullets[i].center = CGPointMake(Fighter.center.x-5, Fighter.center.y);
+                else if(bulletfired ==4)
+                    Player1bullets[i].center = CGPointMake(Fighter.center.x-10, Fighter.center.y);
+                else if(bulletfired >=5)
+                    break;
+                bulletfired +=1;
+            }
+        }
+        player1Energy -= 30;
+    }
 }
 -(void)Player1MoveLeft{
     NSLog(@"Move Left");
@@ -597,10 +638,6 @@
 }
 
 -(void)BackToMenu{
-    /*
-     if(Help.hidden == false)
-     return;
-     */
     gamePause = true;
     AppDelegate* delegateroot = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     RootViewController *root = [delegateroot GetRootViewController];

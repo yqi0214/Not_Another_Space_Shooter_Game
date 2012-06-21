@@ -15,6 +15,7 @@
     UIImageView *background;
    
     UIImageView *Help;
+    UIImageView *Credits;
     
     UILabel *gameTitle;
   
@@ -24,6 +25,7 @@
     
     
     UIButton *helpButton;
+    UIButton *Creditsbutton;
 }
 
 @end

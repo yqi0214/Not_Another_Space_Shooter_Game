@@ -66,6 +66,15 @@
     //helpButton.transform = CGAffineTransformMakeRotation(M_PI_2);
     [self.view addSubview:helpButton];
     [helpButton addTarget:self action:@selector(didPushHelpButton) forControlEvents:UIControlEventTouchDown];
+    
+    //setup credits button
+    Creditsbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    Creditsbutton.frame = CGRectMake(650, 300, 120, 60);
+    Creditsbutton.center = CGPointMake(383, 380);
+    [Creditsbutton setTitle:@"Credits" forState:UIControlStateNormal];
+    //helpButton.transform = CGAffineTransformMakeRotation(M_PI_2);
+    [self.view addSubview:Creditsbutton];
+    [Creditsbutton addTarget:self action:@selector(didPushCreditsButton) forControlEvents:UIControlEventTouchDown];
 
     
     Help = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Help.png"]];
@@ -73,22 +82,38 @@
     [self.view  addSubview:Help];
     Help.hidden = true;
     [Help release];
+    
+    Credits = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Credits.png"]];
+    Credits.frame = CGRectMake(0, 0, Credits.image.size.width, Credits.image.size.height);
+    Credits.center = CGPointMake(768/2, 1024/2);
+    [self.view  addSubview:Credits];
+    Credits.hidden = true;
+    [Credits release];
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     //  NSLog(@"touches began");
     UITouch *touch = [touches anyObject];
-
+    
     CGPoint touchLocation = [touch locationInView:self.view];
     NSLog(@"touch at (%i,%i)",(int)touchLocation.x,(int)touchLocation.y);
     
-     if(Help.hidden == false){
-         Help.hidden = true;
-         helpButton.hidden = false;
-         if(gameStarted)
-             resumeGameButton.hidden = false;
-         newGameButton.hidden = false;
-     return;
-     }
+    if(Help.hidden == false){
+        Help.hidden = true;
+        Creditsbutton.hidden = false;
+        helpButton.hidden = false;
+        if(gameStarted)
+            resumeGameButton.hidden = false;
+        newGameButton.hidden = false;
+    }
+    if(Credits.hidden == false){
+        Credits.hidden = true;
+        Creditsbutton.hidden = false;
+        helpButton.hidden = false;
+        if(gameStarted)
+            resumeGameButton.hidden = false;
+        newGameButton.hidden = false;
+        return;
+    }
 }
 -(void)NewGame{
     if(gameStarted){
@@ -117,6 +142,13 @@
     helpButton.hidden = true;
     resumeGameButton.hidden = true;
     newGameButton.hidden = true;
+}
+-(void)didPushCreditsButton{
+    Credits.hidden = false;
+    helpButton.hidden = true;
+    resumeGameButton.hidden = true;
+    newGameButton.hidden = true;
+    Creditsbutton.hidden = true;
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];

@@ -56,7 +56,39 @@
     [self.view addSubview:resumeGameButton];
     [resumeGameButton addTarget:self action:@selector(ResumeGame) forControlEvents:UIControlEventTouchDown];
     resumeGameButton.hidden = true;
+    
+    //setup help button
+    helpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    helpButton.frame = CGRectMake(650, 300, 120, 60);
+    helpButton.center = CGPointMake(383, 300);
+   // helpButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+    [helpButton setTitle:@"How to play" forState:UIControlStateNormal];
+    //helpButton.transform = CGAffineTransformMakeRotation(M_PI_2);
+    [self.view addSubview:helpButton];
+    [helpButton addTarget:self action:@selector(didPushHelpButton) forControlEvents:UIControlEventTouchDown];
 
+    
+    Help = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Help.png"]];
+    Help.frame = CGRectMake(0, 0, Help.image.size.width, Help.image.size.height);
+    [self.view  addSubview:Help];
+    Help.hidden = true;
+    [Help release];
+}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    //  NSLog(@"touches began");
+    UITouch *touch = [touches anyObject];
+
+    CGPoint touchLocation = [touch locationInView:self.view];
+    NSLog(@"touch at (%i,%i)",(int)touchLocation.x,(int)touchLocation.y);
+    
+     if(Help.hidden == false){
+         Help.hidden = true;
+         helpButton.hidden = false;
+         if(gameStarted)
+             resumeGameButton.hidden = false;
+         newGameButton.hidden = false;
+     return;
+     }
 }
 -(void)NewGame{
     if(gameStarted){
@@ -79,6 +111,12 @@
         RootViewController *root = [delegateroot GetRootViewController];
         [root ResumeGame];
     }
+}
+-(void)didPushHelpButton{
+    Help.hidden = false;
+    helpButton.hidden = true;
+    resumeGameButton.hidden = true;
+    newGameButton.hidden = true;
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];

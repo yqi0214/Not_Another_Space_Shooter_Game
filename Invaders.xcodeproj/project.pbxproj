@@ -30,6 +30,9 @@
 		155979541590D4DA0024F600 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 155979531590D4DA0024F600 /* RootViewController.m */; };
 		1559795C1590D54D0024F600 /* GameMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1559795B1590D54D0024F600 /* GameMenuView.m */; };
 		1559795E1590DA670024F600 /* SpaceBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559795D1590DA670024F600 /* SpaceBackGround.png */; };
+		1559796C159215AF0024F600 /* Help.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559796B159215AF0024F600 /* Help.png */; };
+		15597977159363DB0024F600 /* YellowBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 15597976159363DB0024F600 /* YellowBar.png */; };
+		1559797A15936DC20024F600 /* RedBall.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559797915936DC20024F600 /* RedBall.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,9 @@
 		1559795A1590D54D0024F600 /* GameMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMenuView.h; sourceTree = "<group>"; };
 		1559795B1590D54D0024F600 /* GameMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameMenuView.m; sourceTree = "<group>"; };
 		1559795D1590DA670024F600 /* SpaceBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpaceBackGround.png; sourceTree = "<group>"; };
+		1559796B159215AF0024F600 /* Help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Help.png; sourceTree = "<group>"; };
+		15597976159363DB0024F600 /* YellowBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YellowBar.png; sourceTree = "<group>"; };
+		1559797915936DC20024F600 /* RedBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedBall.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,12 +146,15 @@
 		152F5469158BADBA0074B693 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1559797915936DC20024F600 /* RedBall.png */,
+				1559796B159215AF0024F600 /* Help.png */,
 				1559795D1590DA670024F600 /* SpaceBackGround.png */,
 				15597942158FA6430024F600 /* Ninja.png */,
 				15597943158FA6430024F600 /* Tank.png */,
 				1559793F158FA37E0024F600 /* Fly.png */,
 				152F54AB158E933F0074B693 /* DropZone.png */,
 				152F54A8158E85840074B693 /* Bound.png */,
+				15597976159363DB0024F600 /* YellowBar.png */,
 				152F54A2158CFBB00074B693 /* RedBar.png */,
 				152F549F158CFAF20074B693 /* BlueBar.png */,
 				152F547D158BAF8A0074B693 /* Bullet.png */,
@@ -221,6 +230,9 @@
 				15597944158FA6430024F600 /* Ninja.png in Resources */,
 				15597945158FA6430024F600 /* Tank.png in Resources */,
 				1559795E1590DA670024F600 /* SpaceBackGround.png in Resources */,
+				1559796C159215AF0024F600 /* Help.png in Resources */,
+				15597977159363DB0024F600 /* YellowBar.png in Resources */,
+				1559797A15936DC20024F600 /* RedBall.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

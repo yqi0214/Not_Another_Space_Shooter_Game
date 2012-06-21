@@ -14,12 +14,16 @@
     
     UIImageView *background;
    
+    UIImageView *Help;
     
     UILabel *gameTitle;
   
     
     UIButton *newGameButton;
     UIButton *resumeGameButton;
+    
+    
+    UIButton *helpButton;
 }
 
 @end

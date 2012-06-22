@@ -37,6 +37,8 @@
 		155979851593A69F0024F600 /* AltFireButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 155979841593A69F0024F600 /* AltFireButton.png */; };
 		1559798B1593ABCB0024F600 /* Credits.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559798A1593ABCB0024F600 /* Credits.png */; };
 		1559798E1593B5080024F600 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559798D1593B5080024F600 /* Icon.png */; };
+		1559799F1593D5A50024F600 /* StateBound.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559799E1593D5A50024F600 /* StateBound.png */; };
+		155979A515942E990024F600 /* MenuBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 155979A415942E990024F600 /* MenuBackGround.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		155979841593A69F0024F600 /* AltFireButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AltFireButton.png; sourceTree = "<group>"; };
 		1559798A1593ABCB0024F600 /* Credits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Credits.png; sourceTree = "<group>"; };
 		1559798D1593B5080024F600 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		1559799E1593D5A50024F600 /* StateBound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StateBound.png; sourceTree = "<group>"; };
+		155979A415942E990024F600 /* MenuBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MenuBackGround.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 		152F5469158BADBA0074B693 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				155979A415942E990024F600 /* MenuBackGround.png */,
+				1559799E1593D5A50024F600 /* StateBound.png */,
 				1559798A1593ABCB0024F600 /* Credits.png */,
 				1559798215939FA20024F600 /* BlackBlock.png */,
 				1559797915936DC20024F600 /* RedBall.png */,
@@ -249,6 +255,8 @@
 				155979851593A69F0024F600 /* AltFireButton.png in Resources */,
 				1559798B1593ABCB0024F600 /* Credits.png in Resources */,
 				1559798E1593B5080024F600 /* Icon.png in Resources */,
+				1559799F1593D5A50024F600 /* StateBound.png in Resources */,
+				155979A515942E990024F600 /* MenuBackGround.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -22,7 +22,7 @@
     gameStarted = FALSE;
     
     //init background
-    background = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"SpaceBackGround.png"]];
+    background = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"MenuBackGround.png"]];
     background.frame = CGRectMake(0, 0, background.image.size.width, background.image.size.height);
     [self.view addSubview:background];
     //background.alpha = 0.3;

@@ -45,15 +45,15 @@
     UIImageView *Player1MaxReinforcementBar;
     UIImageView *Player2MaxReinforcementBar;
     
-    UILabel *Player1ReinforcementLabel;
-    UILabel *Player2ReinforcementLabel;
+    //UILabel *Player1ReinforcementLabel;
+   // UILabel *Player2ReinforcementLabel;
     
     int Player1Reinforcement;
     int Player2Reinforcement;
     int Player1MaxReinforcement;
     int Player2MaxReinforcement;
     
-    UIImageView *Block;
+    UIImageView *StateBound;
     
     //energy bars
     UIImageView *Player1EnergyBar;

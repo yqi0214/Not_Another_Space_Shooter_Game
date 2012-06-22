@@ -56,11 +56,11 @@
     Type = type;
     if(Type==Fly){
         HP = 1;
-        Speed = 1;
+        Speed = 2;
     }
     else if(Type == Ram){
         HP = 3;
-        Speed = 2;
+        Speed = 3;
     }
     else if(Type == Ninja){
         HP = 1;

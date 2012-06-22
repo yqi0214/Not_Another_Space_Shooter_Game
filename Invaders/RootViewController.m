@@ -32,6 +32,7 @@
 
 -(void)BackToMenu {
     gamePlayView.view.hidden = TRUE;
+    [gameMenuView GameStartAnimation];
     
 }
 -(void)ResumeGame{

@@ -27,5 +27,5 @@
     UIButton *helpButton;
     UIButton *Creditsbutton;
 }
-
+-(void)GameStartAnimation;
 @end

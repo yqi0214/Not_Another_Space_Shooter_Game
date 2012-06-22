@@ -123,10 +123,12 @@
     Player1Pad.hidden = true;
     
     //setup back to menu button
-    backToMenu = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    backToMenu = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backToMenu setBackgroundImage:[UIImage imageNamed:@"BackToMenuButton"] forState:UIControlStateNormal];
+    [backToMenu setBackgroundImage:[UIImage imageNamed:@"BackToMenuButton"] forState:UIControlStateSelected];
     backToMenu.frame = CGRectMake(-20, 1024/2, 90, 40);
-    backToMenu.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-    [backToMenu setTitle:@"Back To Menu" forState:UIControlStateNormal];
+   // backToMenu.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+    //[backToMenu setTitle:@"Back To Menu" forState:UIControlStateNormal];
     backToMenu.transform = CGAffineTransformMakeRotation(-M_PI_2);
     [self.view addSubview:backToMenu];
     [backToMenu addTarget:self action:@selector(BackToMenu) forControlEvents:UIControlEventTouchDown];

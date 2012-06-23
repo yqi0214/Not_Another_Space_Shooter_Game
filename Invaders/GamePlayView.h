@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioServices.h>
+#import <AVFoundation/AVFoundation.h>
 #import "Invader.h"
 
 @interface GamePlayView: UIViewController{
-
     
     //player2 side objects and values
     int player2invaderselect;
@@ -66,9 +67,15 @@
     float player2Energy;
     int player2MaxEnergy;
     
- 
-    
-    
+    //sounds effects
+    /*
+    AVAudioPlayer *ShootingBullet;
+    AVAudioPlayer *InvaderDestroy;
+    AVAudioPlayer *HitInvader;
+    */
+    SystemSoundID ShootingBullet;
+    SystemSoundID InvaderDestroy;
+    SystemSoundID HitInvader;
   
     //other game objects and values
     int TotalBulletAvilable;

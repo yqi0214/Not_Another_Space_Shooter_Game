@@ -98,7 +98,8 @@
     Credits.hidden = true;
     [Credits release];
     
-    
+    CFURLRef sayInvadersURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Invaders" ofType:@"wav"]];
+    AudioServicesCreateSystemSoundID(sayInvadersURL, &SayInvaders);
     
     [self GameStartAnimation];
     
@@ -163,6 +164,7 @@
     Creditsbutton.hidden = false;
 }
 -(void)GameStartAnimation{
+    AudioServicesPlaySystemSound(SayInvaders);
     [self HideAllButton];
     background.frame = CGRectMake(0, 0, background.image.size.width*4, background.image.size.height*4);
     [UIView beginAnimations:nil context:NULL];

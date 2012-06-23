@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioServices.h> 
 
 @interface GameMenuView : UIViewController{
     BOOL goodToGo;
@@ -26,6 +27,8 @@
     
     UIButton *helpButton;
     UIButton *Creditsbutton;
+    
+    SystemSoundID SayInvaders;
 }
 -(void)GameStartAnimation;
 @end

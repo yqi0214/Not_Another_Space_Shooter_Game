@@ -20,6 +20,33 @@
     self.view.multipleTouchEnabled = YES;
    // self.view.backgroundColor = [UIColor blackColor];
     
+    //setup sounds
+    
+   // AudioServicesPlaySystemSound(HitInvader);
+   
+    CFURLRef shootingbulletURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Shoot" ofType:@"wav"]];
+    AudioServicesCreateSystemSoundID(shootingbulletURL, &ShootingBullet);
+    
+    
+    CFURLRef InvaderDestroyURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Explosion" ofType:@"wav"]];
+    AudioServicesCreateSystemSoundID(InvaderDestroyURL, &InvaderDestroy);
+    
+    CFURLRef HitInvaderURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Shield" ofType:@"wav"]];
+    AudioServicesCreateSystemSoundID(HitInvaderURL, &HitInvader);
+
+   // AudioServicesPlaySystemSound(HitInvader);
+/*
+    NSURL *shootingbulletURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Shoot" ofType:@"wav"]];
+    ShootingBullet = [[AVAudioPlayer alloc] initWithContentsOfURL:shootingbulletURL error:nil];
+    
+    NSURL *InvaderDestroyURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Explosion" ofType:@"wav"]];
+    InvaderDestroy = [[AVAudioPlayer alloc] initWithContentsOfURL:InvaderDestroyURL error:nil];
+    
+    NSURL *HitInvaderURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Shield" ofType:@"wav"]];
+    HitInvader = [[AVAudioPlayer alloc] initWithContentsOfURL:HitInvaderURL error:nil];
+   */
+    
+    //setup Invader Images
     FlyImage = [[UIImage imageNamed:@"Fly.png"]retain];
     TankImage = [[UIImage imageNamed:@"Tank.png"]retain];
     NinjaImage = [[UIImage imageNamed:@"Ninja.png"]retain];
@@ -281,7 +308,6 @@
     gameTimer = [[NSTimer scheduledTimerWithTimeInterval:2.0/60.0 target:self selector:@selector(UpdateGameEvents) userInfo:nil repeats:YES]retain];
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    //  NSLog(@"touches began");
     UITouch *touch = [touches anyObject];
     //CGPoint touchLocation = [touch locationInView:self.view];
     // NSLog(@"touch at (%i,%i)",(int)touchLocation.x,(int)touchLocation.y);
@@ -292,13 +318,7 @@
 
     CGPoint touchLocation = [touch locationInView:self.view];
     NSLog(@"touch at (%i,%i)",(int)touchLocation.x,(int)touchLocation.y);
-    /*
-    if(Help.hidden == false && gamePause == true){
-        Help.hidden = true;
-        [self ResumeGame];
-     return;
-     }
-     */
+   
     //invader selection
     for(int i=0; i <4; i++)
         if(CGRectContainsPoint(Player2InvaderSelection[i].frame, touchLocation))
@@ -336,29 +356,37 @@
                     if(Player2InvaderData[i].Type ==Fly){
                         player2Energy -= 10;
                         Player2Invaders[i].image = FlyImage;
-                            Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
-                        }
-                        else if(Player2InvaderData[i].Type ==Ninja){
-                            player2Energy -= 50;
-                            Player2Invaders[i].image = NinjaImage;
-                            Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
-                        }
-                        else if(Player2InvaderData[i].Type ==Ram){
-                            player2Energy -= 30;
-                            Player2Invaders[i].image = RamImage;
-                            Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
-                        }
-                        else if(Player2InvaderData[i].Type ==Tank){
-                            player2Energy -= 40;
-                            Player2Invaders[i].image = TankImage;
-                            Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
-                        }
-                        Player2Invaders[i].center =CGPointMake(touchLocation.x, touchLocation.y);
-                    
-                        break;
-                        
+                        Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
                     }
+                    else if(Player2InvaderData[i].Type ==Ninja){
+                        player2Energy -= 50;
+                        Player2Invaders[i].image = NinjaImage;
+                        Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
+                    }
+                    else if(Player2InvaderData[i].Type ==Ram){
+                        player2Energy -= 30;
+                        Player2Invaders[i].image = RamImage;
+                        Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
+                    }
+                    else if(Player2InvaderData[i].Type ==Tank){
+                        player2Energy -= 40;
+                        Player2Invaders[i].image = TankImage;
+                        Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
+                    }
+                    
+                    Player2Invaders[i].center =CGPointMake(touchLocation.x, touchLocation.y);
+                    
+                    //if touch location out of the bound make the invader show up on the edge
+                    if(touchLocation.x < 60+Player2Invaders[i].image.size.width/2)
+                        Player2Invaders[i].center =CGPointMake(60+Player2Invaders[i].image.size.width/2, touchLocation.y);
+                    if(touchLocation.x > 708-Player2Invaders[i].image.size.width/2)
+                        Player2Invaders[i].center =CGPointMake(708-Player2Invaders[i].image.size.width/2, touchLocation.y);
+
+                       
+                    break;
+                    
                 }
+            }
             }
         
     }
@@ -406,40 +434,7 @@
             count++;
         
    // NSLog(@"Invader Count:%i",count);
-    for(int i=0; i < TotalBulletAvilable; i++){
-        if(!Player1BulletsAvailable[i])
-            Player1bullets[i].center = CGPointMake(Player1bullets[i].center.x, Player1bullets[i].center.y-3);
-      //if hit anything
-        for(int j =0; j <TotalInvadersAvailable; j++){
-            if(CGRectIntersectsRect( Player2Invaders[j].frame,Player1bullets[i].frame) && Player1bullets[i].center.x>0){
-                Player1bullets[i].center =CGPointMake(100,-200);
-                Player1BulletsAvailable[i] = TRUE;
-                //invader lose hp
-                Player2InvaderData[j].HP -=1;
-                if(Player2InvaderData[j].HP<1){
-                    Player2Invaders[j].center = CGPointMake(-200, -200);
-                    Player2InvaderData[j].Active = FALSE;
-                    
-                    if(Player2InvaderData[j].Type==Fly)
-                        Player2Reinforcement -= 1;
-                    else if(Player2InvaderData[j].Type == Ram)
-                        Player2Reinforcement -= 2;
-                    else if(Player2InvaderData[j].Type == Tank)
-                        Player2Reinforcement -= 3;
-                    else if(Player2InvaderData[j].Type == Ninja)
-                        Player2Reinforcement -= 5;
-                }
-            }
-        }
-        //if bullets out of the border
-        if(Player1bullets[i].center.y <60-Player1bullets[i].frame.size.height/2){
-            Player1bullets[i].center =CGPointMake(100,-200);
-            Player1BulletsAvailable[i] = TRUE;
-        }
-            
-        
-
-    }
+    [self BulletMovement];
     //player1 movement
     
     if(player1MoveLeft == true && Fighter.center.x > 60+Fighter.image.size.width/2)
@@ -528,6 +523,46 @@
     }
     
 }
+-(void)BulletMovement{
+    for(int i=0; i < TotalBulletAvilable; i++){
+        if(!Player1BulletsAvailable[i])
+            Player1bullets[i].center = CGPointMake(Player1bullets[i].center.x, Player1bullets[i].center.y-3);
+        //if hit anything
+        for(int j =0; j <TotalInvadersAvailable; j++){
+            if(CGRectIntersectsRect( Player2Invaders[j].frame,Player1bullets[i].frame) && Player1bullets[i].center.x>0){
+                Player1bullets[i].center =CGPointMake(100,-200);
+                Player1BulletsAvailable[i] = TRUE;
+                //invader lose hp
+                Player2InvaderData[j].HP -=1;
+                //play sounds
+                AudioServicesPlaySystemSound(HitInvader);
+                if(Player2InvaderData[j].HP<1){
+                    Player2Invaders[j].center = CGPointMake(-200, -200);
+                    Player2InvaderData[j].Active = FALSE;
+                    //play sounds
+                    AudioServicesPlaySystemSound(InvaderDestroy);
+                    
+                    if(Player2InvaderData[j].Type==Fly)
+                        Player2Reinforcement -= 1;
+                    else if(Player2InvaderData[j].Type == Ram)
+                        Player2Reinforcement -= 2;
+                    else if(Player2InvaderData[j].Type == Tank)
+                        Player2Reinforcement -= 3;
+                    else if(Player2InvaderData[j].Type == Ninja)
+                        Player2Reinforcement -= 5;
+                }
+            }
+        }
+        //if bullets out of the border
+        if(Player1bullets[i].center.y <60-Player1bullets[i].frame.size.height/2){
+            Player1bullets[i].center =CGPointMake(100,-200);
+            Player1BulletsAvailable[i] = TRUE;
+        }
+        
+        
+        
+    }
+}
 -(void)InvaderMovement{
     //invaders movement
     for(int i =0; i < TotalInvadersAvailable; i++){
@@ -565,7 +600,8 @@
                     Player1Reinforcement -= 10;
                 else if(Player2InvaderData[i].Type==Tank)
                     Player1Reinforcement -= 20;
-                
+                //play sounds
+                AudioServicesPlaySystemSound(InvaderDestroy);
             }
             
             //if reach the other side
@@ -595,6 +631,8 @@
                 // Player1bullets[i].frame = CGRectMake(Fighter.center.x, Fighter.center.y,
                 //                                    Player1bullets[i].image.size.width, Player1bullets[i].image.size.height);
                 Player1bullets[i].center =Fighter.center;
+                //play sounds
+                AudioServicesPlaySystemSound(ShootingBullet);
                 return;
             }
         }
@@ -623,6 +661,8 @@
             }
         }
         player1Energy -= 30;
+        //play sounds
+        AudioServicesPlaySystemSound(ShootingBullet);
     }
 }
 -(void)Player1MoveLeft{

@@ -76,6 +76,12 @@
     SystemSoundID ShootingBullet;
     SystemSoundID InvaderDestroy;
     SystemSoundID HitInvader;
+    
+    //end game board
+    UIImageView *GameEndBoard;
+    UIImageView *GameEndImage;
+    //UILabel *GameEndBoardLabel;
+    UIButton *GameEndBoardButton;
   
     //other game objects and values
     int TotalBulletAvilable;

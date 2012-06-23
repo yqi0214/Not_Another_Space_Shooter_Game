@@ -21,8 +21,6 @@
    // self.view.backgroundColor = [UIColor blackColor];
     
     //setup sounds
-    
-   // AudioServicesPlaySystemSound(HitInvader);
    
     CFURLRef shootingbulletURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Shoot" ofType:@"wav"]];
     AudioServicesCreateSystemSoundID(shootingbulletURL, &ShootingBullet);
@@ -139,15 +137,15 @@
     
     
     //setup player1 control pad
-   // Player1MoveArrow[0].hidden = true;
-  //  Player1MoveArrow[1].hidden = true;
+    Player1MoveArrow[0].hidden = true;
+    Player1MoveArrow[1].hidden = true;
     
     Player1Pad= [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RedBall.png"]];
     Player1Pad.frame =CGRectMake(100, 960,60, 60);
     [self.view addSubview:Player1Pad];
     Player1PadOriginPoint = Player1Pad.center;
     [Player1Pad release];
-    Player1Pad.hidden = true;
+   // Player1Pad.hidden = true;
     
     //setup back to menu button
     backToMenu = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -265,7 +263,29 @@
     StateBound.center = CGPointMake(760-25+StateBound.image.size.width/2, 1024/2);
     [self.view  addSubview:StateBound];
     [StateBound release];
-   
+    
+    //setup end game board
+    GameEndBoard = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"GameEndBoard.png"]];
+    GameEndBoard.center = CGPointMake(768/2, 1024/2);
+    [self.view addSubview:GameEndBoard];
+    [GameEndBoard release];
+    
+    GameEndImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"GameEndBlueWin.png"]];
+    [self.view addSubview:GameEndImage];
+    [GameEndImage release];
+    
+    
+    GameEndBoardButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    GameEndBoardButton.frame = CGRectMake(650, 10, 120, 60);
+    GameEndBoardButton.center = CGPointMake(560, 1024/2);
+    [GameEndBoardButton setBackgroundImage:[UIImage imageNamed:@"NewGameButton"] forState:UIControlStateNormal];
+    [GameEndBoardButton setBackgroundImage:[UIImage imageNamed:@"NewGameButton"] forState:UIControlStateSelected];
+    GameEndBoardButton.transform = CGAffineTransformMakeRotation(-M_PI_2);
+    [self.view addSubview:GameEndBoardButton];
+    [GameEndBoardButton addTarget:self action:@selector(NewGame) forControlEvents:UIControlEventTouchDown];
+    
+    
+   //game values
     TotalBulletAvilable = 50;
     TotalInvadersAvailable = 50;
     
@@ -280,6 +300,10 @@
 }
 
 -(void)NewGame{
+    GameEndBoard.hidden = true;
+    GameEndImage.hidden = true;
+    GameEndBoardButton.hidden = true;
+    
     Player1Reinforcement = 100;
     Player2Reinforcement = 100;
     
@@ -298,6 +322,8 @@
     
     player1MoveLeft = false;
     player1MoveRight = false;
+    Player1Pad.center = Player1PadOriginPoint;
+    
     gameEnd = false;
     gamePause = false;
     gameTimer = [[NSTimer scheduledTimerWithTimeInterval:2.0/60.0 target:self selector:@selector(UpdateGameEvents) userInfo:nil repeats:YES]retain];
@@ -444,9 +470,9 @@
     
     if(!Player1Pad.hidden){
         if(Player1Pad.center.x < Player1PadOriginPoint.x  && Fighter.center.x > 60+Fighter.image.size.width/2)
-            Fighter.center = CGPointMake(Fighter.center.x-3, Fighter.center.y);
+            Fighter.center = CGPointMake(Fighter.center.x-4, Fighter.center.y);
         if(Player1Pad.center.x > Player1PadOriginPoint.x && Fighter.center.x < 708-Fighter.image.size.width/2)
-            Fighter.center = CGPointMake(Fighter.center.x+3, Fighter.center.y);
+            Fighter.center = CGPointMake(Fighter.center.x+4, Fighter.center.y);
     }
     
     
@@ -502,7 +528,7 @@
     */
     
     if(Player1Reinforcement==0 || Player2Reinforcement==0){
-        if(Player1Reinforcement==0){
+       /* if(Player1Reinforcement==0){
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"War is End" message:[NSString stringWithFormat:@"Red Win"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"New War",nil];
            
             [alert show];
@@ -511,8 +537,9 @@
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"War is End" message:[NSString stringWithFormat:@"Blue Win"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"New War",nil];
            
             [alert show];
-        }
+        }*/
         gameEnd = TRUE;
+        [self ShowWinner];
         return;
     }
     for(int i=0; i < 4;i++){
@@ -687,6 +714,28 @@
     RootViewController *root = [delegateroot GetRootViewController];
     
     [root BackToMenu];
+}
+-(void)switchPlayer1Control{
+    if(!Player1Pad){
+        Player1MoveArrow[0].hidden = false;
+        Player1MoveArrow[1].hidden = false;
+        Player1Pad.hidden = true;
+    }
+    else{
+        Player1MoveArrow[0].hidden = TRUE;
+        Player1MoveArrow[1].hidden = TRUE;
+        Player1Pad.hidden = false; 
+    }
+}
+-(void)ShowWinner{
+    if(Player1Reinforcement==0)
+        GameEndImage.image = [UIImage imageNamed:@"GameEndRedWin.png"];
+    else if(Player2Reinforcement ==0)
+        GameEndImage.image = [UIImage imageNamed:@"GameEndBlueWin.png"];
+    GameEndImage.center = CGPointMake(768/2, 1024/2);
+    GameEndImage.hidden = false;
+    GameEndBoard.hidden = false;
+    GameEndBoardButton.hidden = false;
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];

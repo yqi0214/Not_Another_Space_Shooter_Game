@@ -50,6 +50,9 @@
 		15CA3FAE15962BE300275046 /* Shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 15CA3FAB15962BE300275046 /* Shoot.wav */; };
 		15CA3FB21596361600275046 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15CA3FB11596361600275046 /* AVFoundation.framework */; };
 		15CA3FB815963DC000275046 /* Invaders.wav in Resources */ = {isa = PBXBuildFile; fileRef = 15CA3FB715963DC000275046 /* Invaders.wav */; };
+		15CA3FBE1596630000275046 /* GameEndBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CA3FBD1596630000275046 /* GameEndBoard.png */; };
+		15CA3FC2159666E400275046 /* GameEndBlueWin.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CA3FC0159666E300275046 /* GameEndBlueWin.png */; };
+		15CA3FC3159666E400275046 /* GameEndRedWin.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CA3FC1159666E400275046 /* GameEndRedWin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +107,9 @@
 		15CA3FAB15962BE300275046 /* Shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Shoot.wav; path = Sounds/Shoot.wav; sourceTree = "<group>"; };
 		15CA3FB11596361600275046 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		15CA3FB715963DC000275046 /* Invaders.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Invaders.wav; path = Sounds/Invaders.wav; sourceTree = "<group>"; };
+		15CA3FBD1596630000275046 /* GameEndBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameEndBoard.png; sourceTree = "<group>"; };
+		15CA3FC0159666E300275046 /* GameEndBlueWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameEndBlueWin.png; sourceTree = "<group>"; };
+		15CA3FC1159666E400275046 /* GameEndRedWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameEndRedWin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,7 +195,10 @@
 				155979CB15951BC30024F600 /* StateBarsImages */,
 				155979C915951B7D0024F600 /* ShipsImages */,
 				155979B21594EA490024F600 /* ButtonImages */,
+				15CA3FC0159666E300275046 /* GameEndBlueWin.png */,
+				15CA3FC1159666E400275046 /* GameEndRedWin.png */,
 				155979A415942E990024F600 /* MenuBackGround.png */,
+				15CA3FBD1596630000275046 /* GameEndBoard.png */,
 				1559798A1593ABCB0024F600 /* Credits.png */,
 				1559798215939FA20024F600 /* BlackBlock.png */,
 				1559797915936DC20024F600 /* RedBall.png */,
@@ -333,6 +342,9 @@
 				15CA3FAD15962BE300275046 /* Shield.wav in Resources */,
 				15CA3FAE15962BE300275046 /* Shoot.wav in Resources */,
 				15CA3FB815963DC000275046 /* Invaders.wav in Resources */,
+				15CA3FBE1596630000275046 /* GameEndBoard.png in Resources */,
+				15CA3FC2159666E400275046 /* GameEndBlueWin.png in Resources */,
+				15CA3FC3159666E400275046 /* GameEndRedWin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

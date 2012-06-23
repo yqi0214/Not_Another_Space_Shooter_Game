@@ -122,8 +122,8 @@
     Player1MoveArrow[0].transform = CGAffineTransformMakeRotation(M_PI);
     [self.view addSubview:Player1MoveArrow[0]];
     [Player1MoveArrow[0] addTarget:self action:@selector(Player1MoveLeft) forControlEvents:UIControlEventTouchDown];
-    [Player1MoveArrow[0] addTarget:self action:@selector(Player1MoveStop) forControlEvents:UIControlEventTouchUpInside];
-    [Player1MoveArrow[0] addTarget:self action:@selector(Player1MoveStop) forControlEvents:UIControlEventTouchUpOutside];
+    [Player1MoveArrow[0] addTarget:self action:@selector(Player1StopMoveLeft) forControlEvents:UIControlEventTouchUpInside];
+    [Player1MoveArrow[0] addTarget:self action:@selector(Player1StopMoveLeft) forControlEvents:UIControlEventTouchUpOutside];
     
     
     Player1MoveArrow[1] = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -132,20 +132,19 @@
     [Player1MoveArrow[1] setBackgroundImage:[UIImage imageNamed:@"Arrow.png"] forState:UIControlStateSelected];
     [self.view addSubview:Player1MoveArrow[1]];
     [Player1MoveArrow[1] addTarget:self action:@selector(Player1MoveRight) forControlEvents:UIControlEventTouchDown];
-    [Player1MoveArrow[1] addTarget:self action:@selector(Player1MoveStop) forControlEvents:UIControlEventTouchUpInside];
-    [Player1MoveArrow[1] addTarget:self action:@selector(Player1MoveStop) forControlEvents:UIControlEventTouchUpOutside];
+    [Player1MoveArrow[1] addTarget:self action:@selector(Player1StopMoveRight) forControlEvents:UIControlEventTouchUpInside];
+    [Player1MoveArrow[1] addTarget:self action:@selector(Player1StopMoveRight) forControlEvents:UIControlEventTouchUpOutside];
     
     
     //setup player1 control pad
-    Player1MoveArrow[0].hidden = true;
-    Player1MoveArrow[1].hidden = true;
+ 
     
     Player1Pad= [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RedBall.png"]];
     Player1Pad.frame =CGRectMake(100, 960,60, 60);
     [self.view addSubview:Player1Pad];
     Player1PadOriginPoint = Player1Pad.center;
     [Player1Pad release];
-   // Player1Pad.hidden = true;
+   
     
     //setup back to menu button
     backToMenu = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -295,7 +294,14 @@
     player1MaxEnergy = 100;
     player2MaxEnergy = 100;
     
+    
+    //Player1MoveArrow[0].hidden = true;
+    //Player1MoveArrow[1].hidden = true;
+     Player1Pad.hidden = true;
+    
     [self NewGame];
+    
+    
    
 }
 
@@ -441,7 +447,7 @@
     
     CGPoint touchLocation = [touch locationInView:self.view];
 
-    if(CGRectContainsPoint(CGRectMake(0, 800, 300, 300), touchLocation))
+    if(CGRectContainsPoint(CGRectMake(0, 600, 500, 500), touchLocation))
         Player1Pad.center = Player1PadOriginPoint;
 }
 
@@ -695,12 +701,20 @@
 -(void)Player1MoveLeft{
     NSLog(@"Move Left");
     player1MoveLeft = true;
-    player1MoveRight = false;
+  //  player1MoveRight = false;
 }
 -(void)Player1MoveRight{
     NSLog(@"Move Right");
     player1MoveRight = true;
+   // player1MoveLeft = false;
+}
+-(void)Player1StopMoveLeft{
+    NSLog(@"Stop Move Left");
     player1MoveLeft = false;
+}
+-(void)Player1StopMoveRight{
+    NSLog(@"Stop Move Right");
+    player1MoveRight = false;
 }
 -(void)Player1MoveStop{
     NSLog(@"Move Stop");

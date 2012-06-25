@@ -124,15 +124,35 @@
     messageButton[1] = [UIButton buttonWithType:UIButtonTypeCustom];
     messageButton[1].frame = CGRectMake(650, 10, 120, 60);
     messageButton[1].center = CGPointMake(510, 630);
-    [messageButton[1] setBackgroundImage:[UIImage imageNamed:@"NewGameButton"] forState:UIControlStateNormal];
-    [messageButton[1] setBackgroundImage:[UIImage imageNamed:@"NewGameButton"] forState:UIControlStateSelected];
+    [messageButton[1] setBackgroundImage:[UIImage imageNamed:@"TwoPlayerButton"] forState:UIControlStateNormal];
+    [messageButton[1] setBackgroundImage:[UIImage imageNamed:@"TwoPlayerButton"] forState:UIControlStateSelected];
     [self.view addSubview:messageButton[1]];
-    [messageButton[1] addTarget:self action:@selector(StartNewGame) forControlEvents:UIControlEventTouchDown];
+    [messageButton[1] addTarget:self action:@selector(StartTwoPlayerGame) forControlEvents:UIControlEventTouchDown];
+    
+    messageButton[2] = [UIButton buttonWithType:UIButtonTypeCustom];
+    messageButton[2].frame = CGRectMake(650, 10, 120, 60);
+    messageButton[2].center = CGPointMake(510, 565);
+    [messageButton[2] setBackgroundImage:[UIImage imageNamed:@"SinglePlayer1Button"] forState:UIControlStateNormal];
+    [messageButton[2] setBackgroundImage:[UIImage imageNamed:@"SinglePlayer1Button"] forState:UIControlStateSelected];
+    [self.view addSubview:messageButton[2]];
+    [messageButton[2] addTarget:self action:@selector(StartSinglePlayer1) forControlEvents:UIControlEventTouchDown];
+    
+    messageButton[3] = [UIButton buttonWithType:UIButtonTypeCustom];
+    messageButton[3].frame = CGRectMake(650, 10, 120, 60);
+    messageButton[3].center = CGPointMake(510, 500);
+    [messageButton[3] setBackgroundImage:[UIImage imageNamed:@"SinglePlayer2Button"] forState:UIControlStateNormal];
+    [messageButton[3] setBackgroundImage:[UIImage imageNamed:@"SinglePlayer2Button"] forState:UIControlStateSelected];
+    [self.view addSubview:messageButton[3]];
+    [messageButton[3] addTarget:self action:@selector(StartSinglePlayer2) forControlEvents:UIControlEventTouchDown];
+    
     
     message.hidden = true;
     messageLabel.hidden = true;
     messageButton[0].hidden = true;
     messageButton[1].hidden = true;
+    messageButton[2].hidden = true;
+    messageButton[3].hidden = true;
+    
     
     
     // newGameButton.alpha =0.5;
@@ -169,27 +189,30 @@
     }
 }
 -(void)NewGame{
-    if(gameStarted){
-        /*
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New Game" message:@"Are you sure you want to start a new game?" delegate:self cancelButtonTitle:@"Naaa" otherButtonTitles:@"Sure", nil];
-         [alert show];
-         [alert release];*/
-        
-        message.hidden = false;
-        messageLabel.hidden = false;
-        messageButton[0].hidden = false;
-        messageButton[1].hidden = false;
-        
-        
-    }
-    else{
-        AppDelegate* delegateroot = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        RootViewController *root = [delegateroot GetRootViewController];
-        resumeGameButton.hidden = FALSE;
-        gameStarted = TRUE;
-        resumeGameButton.hidden = false;
-        [root NewGame];
-    }
+    // if(gameStarted){
+    /*
+     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New Game" message:@"Are you sure you want to start a new game?" delegate:self cancelButtonTitle:@"Naaa" otherButtonTitles:@"Sure", nil];
+     [alert show];
+     [alert release];*/
+    
+    message.hidden = false;
+    messageLabel.hidden = false;
+    messageButton[0].hidden = false;
+    messageButton[1].hidden = false;
+    messageButton[2].hidden = false;
+    messageButton[3].hidden = false;
+    
+    /* 
+     }
+     else{
+     AppDelegate* delegateroot = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+     RootViewController *root = [delegateroot GetRootViewController];
+     resumeGameButton.hidden = FALSE;
+     gameStarted = TRUE;
+     resumeGameButton.hidden = false;
+     [root NewGame];
+     }
+     */
 }
 -(void)ResumeGame{
     if(gameStarted){
@@ -234,20 +257,49 @@
     background.frame = CGRectMake(0, 0, background.image.size.width, background.image.size.height);
     [UIView commitAnimations];
 }
--(void)StartNewGame{
+-(void)StartTwoPlayerGame{
     message.hidden = true;
     messageLabel.hidden = true;
     messageButton[0].hidden = true;
     messageButton[1].hidden = true;
+    messageButton[2].hidden = true;
+    messageButton[3].hidden = true;
+    gameStarted = TRUE;
     AppDelegate* delegateroot = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     RootViewController *root = [delegateroot GetRootViewController];
-    [root NewGame];
+    [root TwoPlayerGame];
+}
+-(void)StartSinglePlayer1{
+    message.hidden = true;
+    messageLabel.hidden = true;
+    messageButton[0].hidden = true;
+    messageButton[1].hidden = true;
+    messageButton[2].hidden = true;
+    messageButton[3].hidden = true;
+    gameStarted = TRUE;
+    AppDelegate* delegateroot = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    RootViewController *root = [delegateroot GetRootViewController];
+    [root SinglePlayer1];
+}
+-(void)StartSinglePlayer2{
+    message.hidden = true;
+    messageLabel.hidden = true;
+    messageButton[0].hidden = true;
+    messageButton[1].hidden = true;
+    messageButton[2].hidden = true;
+    messageButton[3].hidden = true;
+    gameStarted = TRUE;
+    AppDelegate* delegateroot = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    RootViewController *root = [delegateroot GetRootViewController];
+    [root SinglePlayer2];
 }
 -(void)Naaa{
     message.hidden = true;
     messageLabel.hidden = true;
     messageButton[0].hidden = true;
     messageButton[1].hidden = true;
+    messageButton[2].hidden = true;
+    messageButton[3].hidden = true;
 }
 
 

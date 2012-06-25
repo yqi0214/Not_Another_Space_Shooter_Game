@@ -31,7 +31,7 @@
     //message
     UIImageView *message;
     UILabel *messageLabel;
-    UIButton *messageButton[2];
+    UIButton *messageButton[4];
     
     SystemSoundID SayInvaders;
 }

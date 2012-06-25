@@ -86,6 +86,9 @@
     UIButton *GameEndBoardButton;
   
     //other game objects and values
+    BOOL player1AI;
+    BOOL player2AI;
+    
     int TotalBulletAvilable;
     int TotalInvadersAvailable;
     
@@ -99,9 +102,16 @@
     UIButton *backToMenu;
     UIButton *toggleControl;
     
+    UILabel *gametime;
+    
     NSTimer *gameTimer;
+    float currentTime;
+    float previousTime;
 }
 -(void)NewGame;
+-(void)SinglePlayer1;
+-(void)SinglePlayer2;
+-(void)TwoPlayerGame;
 -(void)ResumeGame;
 //-(void)InvaderMovement;
 @end

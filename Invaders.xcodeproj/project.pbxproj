@@ -30,6 +30,9 @@
 		1539EA3B1598AD89001B51AB /* Explosion2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA391598AD89001B51AB /* Explosion2.wav */; };
 		1539EA3E1598AF92001B51AB /* MessageBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA3D1598AF92001B51AB /* MessageBoard.png */; };
 		1539EA401598B441001B51AB /* Naaa.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA3F1598B441001B51AB /* Naaa.png */; };
+		1539EA551598FC95001B51AB /* SinglePlayer1Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA521598FC95001B51AB /* SinglePlayer1Button.png */; };
+		1539EA561598FC95001B51AB /* SinglePlayer2Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA531598FC95001B51AB /* SinglePlayer2Button.png */; };
+		1539EA571598FC95001B51AB /* TwoPlayerButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA541598FC95001B51AB /* TwoPlayerButton.png */; };
 		15597940158FA37E0024F600 /* Fly.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559793F158FA37E0024F600 /* Fly.png */; };
 		15597944158FA6430024F600 /* Ninja.png in Resources */ = {isa = PBXBuildFile; fileRef = 15597942158FA6430024F600 /* Ninja.png */; };
 		15597945158FA6430024F600 /* Tank.png in Resources */ = {isa = PBXBuildFile; fileRef = 15597943158FA6430024F600 /* Tank.png */; };
@@ -90,6 +93,9 @@
 		1539EA391598AD89001B51AB /* Explosion2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Explosion2.wav; path = Sounds/Explosion2.wav; sourceTree = "<group>"; };
 		1539EA3D1598AF92001B51AB /* MessageBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageBoard.png; sourceTree = "<group>"; };
 		1539EA3F1598B441001B51AB /* Naaa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Naaa.png; sourceTree = "<group>"; };
+		1539EA521598FC95001B51AB /* SinglePlayer1Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SinglePlayer1Button.png; sourceTree = "<group>"; };
+		1539EA531598FC95001B51AB /* SinglePlayer2Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SinglePlayer2Button.png; sourceTree = "<group>"; };
+		1539EA541598FC95001B51AB /* TwoPlayerButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwoPlayerButton.png; sourceTree = "<group>"; };
 		1559793F158FA37E0024F600 /* Fly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fly.png; sourceTree = "<group>"; };
 		15597942158FA6430024F600 /* Ninja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ninja.png; sourceTree = "<group>"; };
 		15597943158FA6430024F600 /* Tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tank.png; sourceTree = "<group>"; };
@@ -226,6 +232,9 @@
 		155979B21594EA490024F600 /* ButtonImages */ = {
 			isa = PBXGroup;
 			children = (
+				1539EA521598FC95001B51AB /* SinglePlayer1Button.png */,
+				1539EA531598FC95001B51AB /* SinglePlayer2Button.png */,
+				1539EA541598FC95001B51AB /* TwoPlayerButton.png */,
 				1539EA3F1598B441001B51AB /* Naaa.png */,
 				1539EA1D1597609D001B51AB /* ToggleControlButton.png */,
 				155979B31594EA820024F600 /* BackToMenuButton.png */,
@@ -365,6 +374,9 @@
 				1539EA3B1598AD89001B51AB /* Explosion2.wav in Resources */,
 				1539EA3E1598AF92001B51AB /* MessageBoard.png in Resources */,
 				1539EA401598B441001B51AB /* Naaa.png in Resources */,
+				1539EA551598FC95001B51AB /* SinglePlayer1Button.png in Resources */,
+				1539EA561598FC95001B51AB /* SinglePlayer2Button.png in Resources */,
+				1539EA571598FC95001B51AB /* TwoPlayerButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

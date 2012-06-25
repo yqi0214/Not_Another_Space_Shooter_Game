@@ -39,8 +39,16 @@
     gamePlayView.view.hidden = FALSE;
     [gamePlayView ResumeGame];
 }
--(void)NewGame{
-    [gamePlayView NewGame];
+-(void)TwoPlayerGame{
+    [gamePlayView TwoPlayerGame];
+    gamePlayView.view.hidden = FALSE;
+}
+-(void)SinglePlayer1{
+    [gamePlayView SinglePlayer1];
+    gamePlayView.view.hidden = FALSE;
+}
+-(void)SinglePlayer2{
+    [gamePlayView SinglePlayer2];
     gamePlayView.view.hidden = FALSE;
 }
 

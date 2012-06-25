@@ -300,6 +300,14 @@
     [GameEndBoardButton addTarget:self action:@selector(NewGame) forControlEvents:UIControlEventTouchDown];
     
     
+    gametime= [[UILabel alloc]init];
+    gametime.frame = CGRectMake(760-70, 1024/2-10, 50, 30);
+    gametime.textColor = [UIColor blackColor];
+    gametime.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:gametime];
+    [gametime release];
+    gametime.transform = CGAffineTransformMakeRotation(M_PI_2);
+    
    //game values
     TotalBulletAvilable = 50;
     TotalInvadersAvailable = 50;
@@ -310,18 +318,61 @@
     player1MaxEnergy = 100;
     player2MaxEnergy = 100;
     
+    player1AI = false;
+    player2AI = false;
+    
     
     //Player1MoveArrow[0].hidden = true;
     //Player1MoveArrow[1].hidden = true;
      Player1Pad.hidden = true;
     
-    [self NewGame];
+    
+   // [self NewGame];
     
     
    
 }
+-(void)TwoPlayerGame{
+    player1AI = false;
+    player2AI = false;
+    [self NewGame];
+
+}
+-(void)SinglePlayer1{
+    player1AI = false;
+    player2AI = true;
+    [self NewGame];
+}
+-(void)SinglePlayer2{
+    player2AI = false;
+    player1AI = true;
+    [self NewGame];
+}
 
 -(void)NewGame{
+    if(player1AI){
+        Player1MoveArrow[0].hidden = true;
+        Player1MoveArrow[1].hidden = true;
+        Player1FireButton.hidden = true;
+        Player1AltFireButton.hidden = true;
+        toggleControl.hidden = true;
+    }
+    else{
+        Player1MoveArrow[0].hidden = false;
+        Player1MoveArrow[1].hidden = false;
+        Player1FireButton.hidden = false;
+        Player1AltFireButton.hidden = false;
+        toggleControl.hidden = false;
+    }
+    if(player2AI){
+        for(int i=0; i < 4; i++)
+            Player2InvaderSelection[i].hidden = true;
+    }
+    else{
+        for(int i=0; i < 4; i++)
+            Player2InvaderSelection[i].hidden = false;
+    }
+    
     GameEndBoard.hidden = true;
     GameEndImage.hidden = true;
     GameEndBoardButton.hidden = true;
@@ -355,12 +406,16 @@
     
     gameEnd = false;
     gamePause = false;
-    gameTimer = [[NSTimer scheduledTimerWithTimeInterval:2.0/60.0 target:self selector:@selector(UpdateGameEvents) userInfo:nil repeats:YES]retain];
+    
+    currentTime = 0.0;
+    previousTime =0.0;
+    
+    gameTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(UpdateGameEvents) userInfo:nil repeats:YES]retain];
 }
 -(void)ResumeGame{
     gamePause = false;
     
-    gameTimer = [[NSTimer scheduledTimerWithTimeInterval:2.0/60.0 target:self selector:@selector(UpdateGameEvents) userInfo:nil repeats:YES]retain];
+    gameTimer = [[NSTimer scheduledTimerWithTimeInterval:1.0/60.0 target:self selector:@selector(UpdateGameEvents) userInfo:nil repeats:YES]retain];
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
@@ -480,13 +535,21 @@
     if(CGRectContainsPoint(CGRectMake(0, 600, 500, 500), touchLocation))
         Player1Pad.center = Player1PadOriginPoint;
 }
-
 -(void)UpdateGameEvents{
     if(gameEnd || gamePause){
         [gameTimer invalidate];
         gameTimer = nil;
         return;
     }
+    
+    currentTime += 1.0/60.0;
+    gametime.text = [NSString stringWithFormat:@"%0.2f",currentTime];
+    
+    if(player2AI && currentTime-previousTime >0.6)
+        [self player2AIActivate];
+    if(player1AI)
+        [self player1AIActivate];
+    
     backGround.frame = CGRectMake(0,backGround.frame.origin.y+1, backGround.image.size.width, backGround.image.size.height);
     if(backGround.frame.origin.y>0)
         backGround.frame = CGRectMake(0, -1024, backGround.image.size.width, backGround.image.size.height);
@@ -542,15 +605,7 @@
     float r1 = (float)Player1Reinforcement/Player1MaxReinforcement;
     float r2 = (float)Player2Reinforcement/Player2MaxReinforcement;
     
-  /*
-    if(Player2ReinforcementBar.frame.size.height > Player2ReinforcementBar.image.size.height*r2)
-       Player2ReinforcementBar.frame = CGRectMake(768-15, 1024/2-(Player2ReinforcementBar.frame.size.height-1),
-                                                  Player2ReinforcementBar.image.size.width, Player2ReinforcementBar.frame.size.height-1);
-    
-    if(Player1ReinforcementBar.frame.size.height > Player1ReinforcementBar.image.size.height*r1)
-        Player1ReinforcementBar.frame = CGRectMake(768-15, 1024/2,
-                                                   Player1ReinforcementBar.image.size.width, Player1ReinforcementBar.frame.size.height-1);
-   */
+ 
        
     Player2ReinforcementBar.frame = CGRectMake(760-15+2, 1024/2-Player2ReinforcementBar.image.size.height*r2,
                                                Player2ReinforcementBar.image.size.width, Player2ReinforcementBar.image.size.height*r2);
@@ -564,16 +619,6 @@
     */
     
     if(Player1Reinforcement==0 || Player2Reinforcement==0){
-       /* if(Player1Reinforcement==0){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"War is End" message:[NSString stringWithFormat:@"Red Win"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"New War",nil];
-           
-            [alert show];
-        }
-        else if(Player2Reinforcement ==0){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"War is End" message:[NSString stringWithFormat:@"Blue Win"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"New War",nil];
-           
-            [alert show];
-        }*/
         gameEnd = TRUE;
         [self ShowWinner];
         return;
@@ -583,7 +628,7 @@
 -(void)BulletMovement{
     for(int i=0; i < TotalBulletAvilable; i++){
         if(!Player1BulletsAvailable[i])
-            Player1bullets[i].center = CGPointMake(Player1bullets[i].center.x, Player1bullets[i].center.y-3);
+            Player1bullets[i].center = CGPointMake(Player1bullets[i].center.x, Player1bullets[i].center.y-4);
         //if hit anything
         for(int j =0; j <TotalInvadersAvailable; j++){
             if(CGRectIntersectsRect( Player2Invaders[j].frame,Player1bullets[i].frame) && Player1bullets[i].center.x>0){
@@ -686,6 +731,12 @@
         player1Energy += 0.4;
     if(player2Energy <100)
         player2Energy += 0.4;
+    /*
+    if(player1AI && player1Energy <100)
+        player1Energy +=0.2;
+    if(player2AI && player2Energy <100)
+        player2Energy +=0.2;
+*/
 }
 -(void)Player1Fire{
     NSLog(@"Fire");
@@ -784,21 +835,113 @@
     GameEndBoard.hidden = false;
     GameEndBoardButton.hidden = false;
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-  
+-(void)player2AIActivate{
+    previousTime = currentTime;
+    int x = 60+arc4random()% 640;
+    int y = 130;
     
-    if([title isEqualToString:@"New War"])
-    {
-        [self NewGame];
+    if(player2Energy>50){
+        int rand = arc4random()%4;
+        if(rand==0)
+            player2invaderselect = Fly;
+        else if(rand ==1)
+            player2invaderselect = Ram;
+        else if(rand ==2)
+            player2invaderselect = Tank;
+        else
+            player2invaderselect = Ninja;
+    }
+    else if(player2Energy>30){
+        int rand = arc4random()%3;
+        if(rand==0)
+            player2invaderselect = Fly;
+        else if(rand ==1)
+            player2invaderselect = Ram;
+        else if(rand ==2)
+            return;
+    }
+    else if(player2Energy >=10){
+        int rand = arc4random()%2;
+        if(rand==0)
+            player2invaderselect = Fly;
+        else if(rand ==1)
+            return;
+    }
+    else{
+        return;
     }
     
+    for(int i =0; i < TotalInvadersAvailable; i++){
+        if (!Player2InvaderData[i].Active){
+            NSLog(@"New Invader");
+            
+            [Player2InvaderData[i] ActiveAndChangeTypeTo:player2invaderselect];
+            if(Player2InvaderData[i].Type ==Fly){
+                player2Energy -= 10;
+                Player2Invaders[i].image = FlyImage;
+                Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
+            }
+            else if(Player2InvaderData[i].Type ==Ninja){
+                player2Energy -= 50;
+                Player2Invaders[i].image = NinjaImage;
+                Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
+            }
+            else if(Player2InvaderData[i].Type ==Ram){
+                player2Energy -= 30;
+                Player2Invaders[i].image = RamImage;
+                Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
+            }
+            else if(Player2InvaderData[i].Type ==Tank){
+                player2Energy -= 50;
+                Player2Invaders[i].image = TankImage;
+                Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
+            }
+            
+            Player2Invaders[i].center =CGPointMake(x, y);
+            
+            //if touch location out of the bound make the invader show up on the edge
+            if(x < 60+Player2Invaders[i].image.size.width/2)
+                Player2Invaders[i].center =CGPointMake(60+Player2Invaders[i].image.size.width/2, y);
+            if(x > 708-Player2Invaders[i].image.size.width/2)
+                Player2Invaders[i].center =CGPointMake(708-Player2Invaders[i].image.size.width/2, y);
+            break;
+        }
+    }
 }
-
-/*
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return YES;
+-(void)player1AIActivate{
+    
+    int target=-1;
+    for(int i =0; i < TotalInvadersAvailable; i++){
+        if (Player2InvaderData[i].Active){
+            if(target==-1)
+                target = i;
+            else if(Player2Invaders[target].center.y<Player2Invaders[i].center.y && Player2Invaders[i].center.y<800){
+                target =i;
+            }
+        }
+    }
+    
+    if(target==-1){
+        /*
+        if(currentTime-previousTime >0.1 && Player2Invaders[target].image.size.width/2 > abs(Player2Invaders[target].center.x-Fighter.center.x)){
+            previousTime = currentTime;
+            [self Player1Fire];
+        }
+        */
+        return;
+    }
+    else{
+        if (Fighter.center.x > 60+Fighter.image.size.width/2 && Player2Invaders[target].center.x<Fighter.center.x)
+            Fighter.center = CGPointMake(Fighter.center.x-6, Fighter.center.y);
+        if(Fighter.center.x < 708-Fighter.image.size.width/2 && Player2Invaders[target].center.x>Fighter.center.x)
+            Fighter.center = CGPointMake(Fighter.center.x+6, Fighter.center.y);
+      
+        if(currentTime-previousTime >0.2 &&player1Energy>10 && Player2Invaders[target].image.size.width/2 > abs(Player2Invaders[target].center.x-Fighter.center.x)){
+            previousTime = currentTime;
+            [self Player1Fire];
+        }
+    }
+    
+    
 }
-*/
 @end

@@ -15,7 +15,9 @@ GamePlayView *gamePlayView;
 GameMenuView *gameMenuView;
 
 }
--(void)NewGame;
+-(void)TwoPlayerGame;
+-(void)SinglePlayer1;
+-(void)SinglePlayer2;
 -(void)BackToMenu;
 -(void)ResumeGame;
 @end

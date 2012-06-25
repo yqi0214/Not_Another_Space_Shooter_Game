@@ -26,11 +26,17 @@
     AudioServicesCreateSystemSoundID(shootingbulletURL, &ShootingBullet);
     
     
-    CFURLRef InvaderDestroyURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Explosion" ofType:@"wav"]];
+    CFURLRef InvaderDestroyURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Explosion2" ofType:@"wav"]];
     AudioServicesCreateSystemSoundID(InvaderDestroyURL, &InvaderDestroy);
     
     CFURLRef HitInvaderURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Shield" ofType:@"wav"]];
     AudioServicesCreateSystemSoundID(HitInvaderURL, &HitInvader);
+    
+    CFURLRef InvaderCrossThroughURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"CrossingThrough" ofType:@"wav"]];
+    AudioServicesCreateSystemSoundID(InvaderCrossThroughURL, &InvaderCrossThrough);
+    
+    CFURLRef HitFighterURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Explosion" ofType:@"wav"]];
+    AudioServicesCreateSystemSoundID(HitFighterURL, &HitFighter);
 
    // AudioServicesPlaySystemSound(HitInvader);
 /*
@@ -156,6 +162,16 @@
     backToMenu.transform = CGAffineTransformMakeRotation(-M_PI_2);
     [self.view addSubview:backToMenu];
     [backToMenu addTarget:self action:@selector(BackToMenu) forControlEvents:UIControlEventTouchDown];
+    
+    toggleControl = [UIButton buttonWithType:UIButtonTypeCustom];
+    [toggleControl setBackgroundImage:[UIImage imageNamed:@"ToggleControlButton"] forState:UIControlStateNormal];
+    [toggleControl setBackgroundImage:[UIImage imageNamed:@"ToggleControlButton"] forState:UIControlStateSelected];
+    toggleControl.frame = CGRectMake(-20, 1024/2+200, 90, 40);
+    // backToMenu.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+    //[backToMenu setTitle:@"Back To Menu" forState:UIControlStateNormal];
+    toggleControl.transform = CGAffineTransformMakeRotation(-M_PI_2);
+    [self.view addSubview:toggleControl];
+    [toggleControl addTarget:self action:@selector(switchPlayer1Control) forControlEvents:UIControlEventTouchDown];
 
    
     
@@ -274,12 +290,12 @@
     [GameEndImage release];
     
     
-    GameEndBoardButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    GameEndBoardButton = [UIButton buttonWithType:UIButtonTypeCustom];
     GameEndBoardButton.frame = CGRectMake(650, 10, 120, 60);
-    GameEndBoardButton.center = CGPointMake(560, 1024/2);
+    GameEndBoardButton.center = CGPointMake(768/2, 1024/2);
     [GameEndBoardButton setBackgroundImage:[UIImage imageNamed:@"NewGameButton"] forState:UIControlStateNormal];
     [GameEndBoardButton setBackgroundImage:[UIImage imageNamed:@"NewGameButton"] forState:UIControlStateSelected];
-    GameEndBoardButton.transform = CGAffineTransformMakeRotation(-M_PI_2);
+   // GameEndBoardButton.transform = CGAffineTransformMakeRotation(-M_PI_2);
     [self.view addSubview:GameEndBoardButton];
     [GameEndBoardButton addTarget:self action:@selector(NewGame) forControlEvents:UIControlEventTouchDown];
     
@@ -326,6 +342,13 @@
         
     }
     
+    for(int i=0; i < 4;i++){
+        if(player2invaderselect ==i)
+            Player2InvaderSelection[i].alpha =1;
+        else
+            Player2InvaderSelection[i].alpha =0.15;
+    }
+    
     player1MoveLeft = false;
     player1MoveRight = false;
     Player1Pad.center = Player1PadOriginPoint;
@@ -355,6 +378,13 @@
     for(int i=0; i <4; i++)
         if(CGRectContainsPoint(Player2InvaderSelection[i].frame, touchLocation))
             player2invaderselect = Fly+i;
+    for(int i=0; i < 4;i++){
+        if(player2invaderselect ==i)
+            Player2InvaderSelection[i].alpha =1;
+        else
+            Player2InvaderSelection[i].alpha =0.15;
+    }
+
     
     //summon new invader if tap in the dropzon
     if(CGRectContainsPoint(DropZone.frame, touchLocation)){
@@ -369,7 +399,7 @@
             return;
             
         }
-        else if(player2invaderselect ==Tank && player2Energy < 30){
+        else if(player2invaderselect ==Tank && player2Energy < 50){
             return;
             
         }
@@ -401,7 +431,7 @@
                         Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
                     }
                     else if(Player2InvaderData[i].Type ==Tank){
-                        player2Energy -= 40;
+                        player2Energy -= 50;
                         Player2Invaders[i].image = TankImage;
                         Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
                     }
@@ -548,13 +578,7 @@
         [self ShowWinner];
         return;
     }
-    for(int i=0; i < 4;i++){
-        if(player2invaderselect ==i)
-            Player2InvaderSelection[i].alpha =1;
-        else
-            Player2InvaderSelection[i].alpha =0.15;
-    }
-    
+        
 }
 -(void)BulletMovement{
     for(int i=0; i < TotalBulletAvilable; i++){
@@ -634,14 +658,23 @@
                 else if(Player2InvaderData[i].Type==Tank)
                     Player1Reinforcement -= 20;
                 //play sounds
-                AudioServicesPlaySystemSound(InvaderDestroy);
+                AudioServicesPlaySystemSound(HitFighter);
             }
             
             //if reach the other side
             if(Player2Invaders[i].frame.origin.y >1024-60){
                 Player2Invaders[i].center = CGPointMake(-200, -200);
                 Player2InvaderData[i].Active = FALSE;
-                Player1Reinforcement -=2;
+                if(Player2InvaderData[i].Type==Fly)
+                    Player1Reinforcement -= 2;
+                else if(Player2InvaderData[i].Type==Ram)
+                    Player1Reinforcement -= 2;
+                else if(Player2InvaderData[i].Type==Ninja)
+                    Player1Reinforcement -= 5;
+                else if(Player2InvaderData[i].Type==Tank)
+                    Player1Reinforcement -= 3;
+                //play sounds
+                AudioServicesPlaySystemSound(InvaderCrossThrough);
             }
         }
         else 
@@ -730,7 +763,7 @@
     [root BackToMenu];
 }
 -(void)switchPlayer1Control{
-    if(!Player1Pad){
+    if(!Player1Pad.hidden){
         Player1MoveArrow[0].hidden = false;
         Player1MoveArrow[1].hidden = false;
         Player1Pad.hidden = true;

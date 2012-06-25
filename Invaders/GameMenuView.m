@@ -29,61 +29,57 @@
     [background release];
     
     
-
+    
     
     gameTitle = [[UILabel alloc]init];
-    gameTitle.frame = CGRectMake(0, 0, 230, 50);
+    gameTitle.frame = CGRectMake(0, 0, 550, 50);
     gameTitle.center = CGPointMake(768/2, 50);
     gameTitle.textColor = [UIColor whiteColor];
     gameTitle.backgroundColor = [UIColor clearColor];
-    gameTitle.font = [UIFont boldSystemFontOfSize:50];
-    gameTitle.text = @"Invaders";
+    gameTitle.font = [UIFont boldSystemFontOfSize:40];
+    gameTitle.text = @"Not Another Space Shooter";
     [self.view addSubview:gameTitle];
     [gameTitle release];
     
     
-    newGameButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    newGameButton = [UIButton buttonWithType:UIButtonTypeCustom];
     newGameButton.frame = CGRectMake(650, 10, 120, 60);
-    newGameButton.center = CGPointMake(383, 120);
+    newGameButton.center = CGPointMake(583, 120);
     [newGameButton setBackgroundImage:[UIImage imageNamed:@"NewGameButton"] forState:UIControlStateNormal];
     [newGameButton setBackgroundImage:[UIImage imageNamed:@"NewGameButton"] forState:UIControlStateSelected];
-   // [newGameButton setTitle:@"New Game" forState:UIControlStateNormal];
+    // [newGameButton setTitle:@"New Game" forState:UIControlStateNormal];
     [self.view addSubview:newGameButton];
     [newGameButton addTarget:self action:@selector(NewGame) forControlEvents:UIControlEventTouchDown];
     
-    resumeGameButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    resumeGameButton = [UIButton buttonWithType:UIButtonTypeCustom];
     resumeGameButton.frame = CGRectMake(650, 110, 120, 60);
-    resumeGameButton.center = CGPointMake(383, 200);
+    resumeGameButton.center = CGPointMake(583, 200);
     [resumeGameButton setBackgroundImage:[UIImage imageNamed:@"ResumeGameButton"] forState:UIControlStateNormal];
     [resumeGameButton setBackgroundImage:[UIImage imageNamed:@"ResumeGameButton"] forState:UIControlStateSelected];
-   // [resumeGameButton setTitle:@"Resume Game" forState:UIControlStateNormal];
     [self.view addSubview:resumeGameButton];
     [resumeGameButton addTarget:self action:@selector(ResumeGame) forControlEvents:UIControlEventTouchDown];
     resumeGameButton.hidden = true;
     
     //setup help button
-    helpButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    helpButton = [UIButton buttonWithType:UIButtonTypeCustom];
     helpButton.frame = CGRectMake(650, 300, 120, 60);
-    helpButton.center = CGPointMake(383, 300);
+    helpButton.center = CGPointMake(583, 300);
     [helpButton setBackgroundImage:[UIImage imageNamed:@"HowToPlayButton"] forState:UIControlStateNormal];
     [helpButton setBackgroundImage:[UIImage imageNamed:@"HowToPlayButton"] forState:UIControlStateSelected];
-   // helpButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-    //[helpButton setTitle:@"How to play" forState:UIControlStateNormal];
-    //helpButton.transform = CGAffineTransformMakeRotation(M_PI_2);
     [self.view addSubview:helpButton];
     [helpButton addTarget:self action:@selector(didPushHelpButton) forControlEvents:UIControlEventTouchDown];
     
     //setup credits button
-    Creditsbutton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    Creditsbutton = [UIButton buttonWithType:UIButtonTypeCustom];
     Creditsbutton.frame = CGRectMake(650, 300, 120, 60);
-    Creditsbutton.center = CGPointMake(383, 380);
+    Creditsbutton.center = CGPointMake(583, 380);
     [Creditsbutton setBackgroundImage:[UIImage imageNamed:@"CreditsButton"] forState:UIControlStateNormal];
     [Creditsbutton setBackgroundImage:[UIImage imageNamed:@"CreditsButton"] forState:UIControlStateSelected];
     //[Creditsbutton setTitle:@"Credits" forState:UIControlStateNormal];
     //helpButton.transform = CGAffineTransformMakeRotation(M_PI_2);
     [self.view addSubview:Creditsbutton];
     [Creditsbutton addTarget:self action:@selector(didPushCreditsButton) forControlEvents:UIControlEventTouchDown];
-
+    
     
     Help = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Help.png"]];
     Help.frame = CGRectMake(0, 0, Help.image.size.width, Help.image.size.height);
@@ -98,10 +94,62 @@
     Credits.hidden = true;
     [Credits release];
     
-    CFURLRef sayInvadersURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Invaders" ofType:@"wav"]];
+    
+    //setup message board
+    message = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"MessageBoard"]];
+    message.center = CGPointMake(768/2, 1024/2);
+    [self.view addSubview:message];
+    [message release];
+    
+    
+    messageLabel = [[UILabel alloc]init];
+    messageLabel.frame = CGRectMake(0, 0, 430, 50);
+    messageLabel.center = CGPointMake(768/2, 400);
+    messageLabel.textColor = [UIColor whiteColor];
+    messageLabel.backgroundColor = [UIColor clearColor];
+    messageLabel.font = [UIFont boldSystemFontOfSize:20];
+    messageLabel.text = @"Are you sure you want to start a new game?";
+    [self.view addSubview:messageLabel];
+    [messageLabel release];
+    
+    
+    messageButton[0] = [UIButton buttonWithType:UIButtonTypeCustom];
+    messageButton[0].frame = CGRectMake(650, 10, 120, 60);
+    messageButton[0].center = CGPointMake(250, 630);
+    [messageButton[0] setBackgroundImage:[UIImage imageNamed:@"Naaa"] forState:UIControlStateNormal];
+    [messageButton[0] setBackgroundImage:[UIImage imageNamed:@"Naaa"] forState:UIControlStateSelected];
+    [self.view addSubview:messageButton[0]];
+    [messageButton[0] addTarget:self action:@selector(Naaa) forControlEvents:UIControlEventTouchDown];
+    
+    messageButton[1] = [UIButton buttonWithType:UIButtonTypeCustom];
+    messageButton[1].frame = CGRectMake(650, 10, 120, 60);
+    messageButton[1].center = CGPointMake(510, 630);
+    [messageButton[1] setBackgroundImage:[UIImage imageNamed:@"NewGameButton"] forState:UIControlStateNormal];
+    [messageButton[1] setBackgroundImage:[UIImage imageNamed:@"NewGameButton"] forState:UIControlStateSelected];
+    [self.view addSubview:messageButton[1]];
+    [messageButton[1] addTarget:self action:@selector(StartNewGame) forControlEvents:UIControlEventTouchDown];
+    
+    message.hidden = true;
+    messageLabel.hidden = true;
+    messageButton[0].hidden = true;
+    messageButton[1].hidden = true;
+    
+    
+    // newGameButton.alpha =0.5;
+    // resumeGameButton.alpha =0.5;
+    // Creditsbutton.alpha =0.5;
+    //helpButton.alpha =0.5;
+    Credits.alpha = 0.5;
+    
+    CFURLRef sayInvadersURL = (CFURLRef) [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"NotAnotherSpaceShooterVoice" ofType:@"wav"]];
     AudioServicesCreateSystemSoundID(sayInvadersURL, &SayInvaders);
     
+    
     [self GameStartAnimation];
+    
+    
+    
+    
     
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -122,9 +170,17 @@
 }
 -(void)NewGame{
     if(gameStarted){
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New Game" message:@"Are you sure you want to start a new game?" delegate:self cancelButtonTitle:@"Naaa" otherButtonTitles:@"Sure", nil];
-        [alert show];
-        [alert release];
+        /*
+         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"New Game" message:@"Are you sure you want to start a new game?" delegate:self cancelButtonTitle:@"Naaa" otherButtonTitles:@"Sure", nil];
+         [alert show];
+         [alert release];*/
+        
+        message.hidden = false;
+        messageLabel.hidden = false;
+        messageButton[0].hidden = false;
+        messageButton[1].hidden = false;
+        
+        
     }
     else{
         AppDelegate* delegateroot = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -135,7 +191,7 @@
         [root NewGame];
     }
 }
-- (void)ResumeGame{
+-(void)ResumeGame{
     if(gameStarted){
         AppDelegate* delegateroot = (AppDelegate*)[[UIApplication sharedApplication] delegate];
         RootViewController *root = [delegateroot GetRootViewController];
@@ -166,25 +222,34 @@
 -(void)GameStartAnimation{
     AudioServicesPlaySystemSound(SayInvaders);
     [self HideAllButton];
-    background.frame = CGRectMake(0, 0, background.image.size.width*4, background.image.size.height*4);
+    if(arc4random()%2==0)
+        background.frame = CGRectMake(768-background.image.size.width*4, 1024-background.image.size.height*4,
+                                      background.image.size.width*4, background.image.size.height*4);
+    else
+        background.frame = CGRectMake(0, 0,background.image.size.width*4, background.image.size.height*4);
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:3];
+    [UIView setAnimationDuration:2];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ShowAllButton)];
     background.frame = CGRectMake(0, 0, background.image.size.width, background.image.size.height);
     [UIView commitAnimations];
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
-    
-    
-    if([title isEqualToString:@"Sure"])
-    {
-        AppDelegate* delegateroot = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        RootViewController *root = [delegateroot GetRootViewController];
-        [root NewGame];
-    }
-    
+-(void)StartNewGame{
+    message.hidden = true;
+    messageLabel.hidden = true;
+    messageButton[0].hidden = true;
+    messageButton[1].hidden = true;
+    AppDelegate* delegateroot = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    RootViewController *root = [delegateroot GetRootViewController];
+    [root NewGame];
 }
+-(void)Naaa{
+    message.hidden = true;
+    messageLabel.hidden = true;
+    messageButton[0].hidden = true;
+    messageButton[1].hidden = true;
+}
+
+
 
 @end

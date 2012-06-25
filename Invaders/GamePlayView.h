@@ -76,6 +76,8 @@
     SystemSoundID ShootingBullet;
     SystemSoundID InvaderDestroy;
     SystemSoundID HitInvader;
+    SystemSoundID InvaderCrossThrough;
+    SystemSoundID HitFighter;
     
     //end game board
     UIImageView *GameEndBoard;
@@ -95,6 +97,7 @@
     UIImageView *DropZone;
     
     UIButton *backToMenu;
+    UIButton *toggleControl;
     
     NSTimer *gameTimer;
 }

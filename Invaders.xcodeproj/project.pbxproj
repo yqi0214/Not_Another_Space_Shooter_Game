@@ -24,6 +24,12 @@
 		152F54A9158E85840074B693 /* Bound.png in Resources */ = {isa = PBXBuildFile; fileRef = 152F54A8158E85840074B693 /* Bound.png */; };
 		152F54AC158E933F0074B693 /* DropZone.png in Resources */ = {isa = PBXBuildFile; fileRef = 152F54AB158E933F0074B693 /* DropZone.png */; };
 		152F54B7158EB0020074B693 /* Invader.m in Sources */ = {isa = PBXBuildFile; fileRef = 152F54B6158EB0020074B693 /* Invader.m */; };
+		1539EA1E1597609D001B51AB /* ToggleControlButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA1D1597609D001B51AB /* ToggleControlButton.png */; };
+		1539EA3215981AD5001B51AB /* NotAnotherSpaceShooterVoice.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA3115981AD5001B51AB /* NotAnotherSpaceShooterVoice.wav */; };
+		1539EA3A1598AD89001B51AB /* CrossingThrough.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA381598AD89001B51AB /* CrossingThrough.wav */; };
+		1539EA3B1598AD89001B51AB /* Explosion2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA391598AD89001B51AB /* Explosion2.wav */; };
+		1539EA3E1598AF92001B51AB /* MessageBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA3D1598AF92001B51AB /* MessageBoard.png */; };
+		1539EA401598B441001B51AB /* Naaa.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA3F1598B441001B51AB /* Naaa.png */; };
 		15597940158FA37E0024F600 /* Fly.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559793F158FA37E0024F600 /* Fly.png */; };
 		15597944158FA6430024F600 /* Ninja.png in Resources */ = {isa = PBXBuildFile; fileRef = 15597942158FA6430024F600 /* Ninja.png */; };
 		15597945158FA6430024F600 /* Tank.png in Resources */ = {isa = PBXBuildFile; fileRef = 15597943158FA6430024F600 /* Tank.png */; };
@@ -49,14 +55,13 @@
 		15CA3FAD15962BE300275046 /* Shield.wav in Resources */ = {isa = PBXBuildFile; fileRef = 15CA3FAA15962BE300275046 /* Shield.wav */; };
 		15CA3FAE15962BE300275046 /* Shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 15CA3FAB15962BE300275046 /* Shoot.wav */; };
 		15CA3FB21596361600275046 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15CA3FB11596361600275046 /* AVFoundation.framework */; };
-		15CA3FB815963DC000275046 /* Invaders.wav in Resources */ = {isa = PBXBuildFile; fileRef = 15CA3FB715963DC000275046 /* Invaders.wav */; };
 		15CA3FBE1596630000275046 /* GameEndBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CA3FBD1596630000275046 /* GameEndBoard.png */; };
 		15CA3FC2159666E400275046 /* GameEndBlueWin.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CA3FC0159666E300275046 /* GameEndBlueWin.png */; };
 		15CA3FC3159666E400275046 /* GameEndRedWin.png in Resources */ = {isa = PBXBuildFile; fileRef = 15CA3FC1159666E400275046 /* GameEndRedWin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		152F544E158BAD790074B693 /* Invaders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Invaders.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		152F544E158BAD790074B693 /* Not Another Invader Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Not Another Invader Game.app"; path = NotAnotherSpaceShooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		152F5452158BAD790074B693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		152F5454158BAD790074B693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		152F5456158BAD790074B693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +84,12 @@
 		152F54AB158E933F0074B693 /* DropZone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DropZone.png; sourceTree = "<group>"; };
 		152F54B5158EB0020074B693 /* Invader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Invader.h; sourceTree = "<group>"; };
 		152F54B6158EB0020074B693 /* Invader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Invader.m; sourceTree = "<group>"; };
+		1539EA1D1597609D001B51AB /* ToggleControlButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToggleControlButton.png; sourceTree = "<group>"; };
+		1539EA3115981AD5001B51AB /* NotAnotherSpaceShooterVoice.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = NotAnotherSpaceShooterVoice.wav; path = Sounds/NotAnotherSpaceShooterVoice.wav; sourceTree = "<group>"; };
+		1539EA381598AD89001B51AB /* CrossingThrough.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = CrossingThrough.wav; path = Sounds/CrossingThrough.wav; sourceTree = "<group>"; };
+		1539EA391598AD89001B51AB /* Explosion2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Explosion2.wav; path = Sounds/Explosion2.wav; sourceTree = "<group>"; };
+		1539EA3D1598AF92001B51AB /* MessageBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MessageBoard.png; sourceTree = "<group>"; };
+		1539EA3F1598B441001B51AB /* Naaa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Naaa.png; sourceTree = "<group>"; };
 		1559793F158FA37E0024F600 /* Fly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fly.png; sourceTree = "<group>"; };
 		15597942158FA6430024F600 /* Ninja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ninja.png; sourceTree = "<group>"; };
 		15597943158FA6430024F600 /* Tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tank.png; sourceTree = "<group>"; };
@@ -106,7 +117,6 @@
 		15CA3FAA15962BE300275046 /* Shield.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Shield.wav; path = Sounds/Shield.wav; sourceTree = "<group>"; };
 		15CA3FAB15962BE300275046 /* Shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Shoot.wav; path = Sounds/Shoot.wav; sourceTree = "<group>"; };
 		15CA3FB11596361600275046 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		15CA3FB715963DC000275046 /* Invaders.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Invaders.wav; path = Sounds/Invaders.wav; sourceTree = "<group>"; };
 		15CA3FBD1596630000275046 /* GameEndBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameEndBoard.png; sourceTree = "<group>"; };
 		15CA3FC0159666E300275046 /* GameEndBlueWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameEndBlueWin.png; sourceTree = "<group>"; };
 		15CA3FC1159666E400275046 /* GameEndRedWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameEndRedWin.png; sourceTree = "<group>"; };
@@ -141,7 +151,7 @@
 		152F544F158BAD790074B693 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				152F544E158BAD790074B693 /* Invaders.app */,
+				152F544E158BAD790074B693 /* Not Another Invader Game.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,11 +205,11 @@
 				155979CB15951BC30024F600 /* StateBarsImages */,
 				155979C915951B7D0024F600 /* ShipsImages */,
 				155979B21594EA490024F600 /* ButtonImages */,
+				1539EA3D1598AF92001B51AB /* MessageBoard.png */,
 				15CA3FC0159666E300275046 /* GameEndBlueWin.png */,
 				15CA3FC1159666E400275046 /* GameEndRedWin.png */,
 				155979A415942E990024F600 /* MenuBackGround.png */,
 				15CA3FBD1596630000275046 /* GameEndBoard.png */,
-				1559798A1593ABCB0024F600 /* Credits.png */,
 				1559798215939FA20024F600 /* BlackBlock.png */,
 				1559797915936DC20024F600 /* RedBall.png */,
 				1559796B159215AF0024F600 /* Help.png */,
@@ -207,6 +217,7 @@
 				152F54AB158E933F0074B693 /* DropZone.png */,
 				152F54A8158E85840074B693 /* Bound.png */,
 				152F547D158BAF8A0074B693 /* Bullet.png */,
+				1559798A1593ABCB0024F600 /* Credits.png */,
 				152F546A158BADBA0074B693 /* Arrow.png */,
 			);
 			path = Images;
@@ -215,6 +226,8 @@
 		155979B21594EA490024F600 /* ButtonImages */ = {
 			isa = PBXGroup;
 			children = (
+				1539EA3F1598B441001B51AB /* Naaa.png */,
+				1539EA1D1597609D001B51AB /* ToggleControlButton.png */,
 				155979B31594EA820024F600 /* BackToMenuButton.png */,
 				155979B41594EA820024F600 /* CreditsButton.png */,
 				155979B51594EA820024F600 /* HowToPlayButton.png */,
@@ -252,7 +265,9 @@
 		155979D415951DD90024F600 /* SoundEffect */ = {
 			isa = PBXGroup;
 			children = (
-				15CA3FB715963DC000275046 /* Invaders.wav */,
+				1539EA381598AD89001B51AB /* CrossingThrough.wav */,
+				1539EA391598AD89001B51AB /* Explosion2.wav */,
+				1539EA3115981AD5001B51AB /* NotAnotherSpaceShooterVoice.wav */,
 				15CA3FA915962BE300275046 /* Explosion.wav */,
 				15CA3FAA15962BE300275046 /* Shield.wav */,
 				15CA3FAB15962BE300275046 /* Shoot.wav */,
@@ -263,9 +278,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		152F544D158BAD790074B693 /* Invaders */ = {
+		152F544D158BAD790074B693 /* NotAnotherSpaceShooter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 152F5466158BAD790074B693 /* Build configuration list for PBXNativeTarget "Invaders" */;
+			buildConfigurationList = 152F5466158BAD790074B693 /* Build configuration list for PBXNativeTarget "NotAnotherSpaceShooter" */;
 			buildPhases = (
 				152F544A158BAD790074B693 /* Sources */,
 				152F544B158BAD790074B693 /* Frameworks */,
@@ -275,9 +290,9 @@
 			);
 			dependencies = (
 			);
-			name = Invaders;
+			name = NotAnotherSpaceShooter;
 			productName = Invaders;
-			productReference = 152F544E158BAD790074B693 /* Invaders.app */;
+			productReference = 152F544E158BAD790074B693 /* Not Another Invader Game.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -300,7 +315,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				152F544D158BAD790074B693 /* Invaders */,
+				152F544D158BAD790074B693 /* NotAnotherSpaceShooter */,
 			);
 		};
 /* End PBXProject section */
@@ -341,10 +356,15 @@
 				15CA3FAC15962BE300275046 /* Explosion.wav in Resources */,
 				15CA3FAD15962BE300275046 /* Shield.wav in Resources */,
 				15CA3FAE15962BE300275046 /* Shoot.wav in Resources */,
-				15CA3FB815963DC000275046 /* Invaders.wav in Resources */,
 				15CA3FBE1596630000275046 /* GameEndBoard.png in Resources */,
 				15CA3FC2159666E400275046 /* GameEndBlueWin.png in Resources */,
 				15CA3FC3159666E400275046 /* GameEndRedWin.png in Resources */,
+				1539EA1E1597609D001B51AB /* ToggleControlButton.png in Resources */,
+				1539EA3215981AD5001B51AB /* NotAnotherSpaceShooterVoice.wav in Resources */,
+				1539EA3A1598AD89001B51AB /* CrossingThrough.wav in Resources */,
+				1539EA3B1598AD89001B51AB /* Explosion2.wav in Resources */,
+				1539EA3E1598AF92001B51AB /* MessageBoard.png in Resources */,
+				1539EA401598B441001B51AB /* Naaa.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +450,7 @@
 				GCC_PREFIX_HEADER = "Invaders/Invaders-Prefix.pch";
 				INFOPLIST_FILE = "Invaders/Invaders-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -441,6 +462,7 @@
 				GCC_PREFIX_HEADER = "Invaders/Invaders-Prefix.pch";
 				INFOPLIST_FILE = "Invaders/Invaders-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -457,7 +479,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		152F5466158BAD790074B693 /* Build configuration list for PBXNativeTarget "Invaders" */ = {
+		152F5466158BAD790074B693 /* Build configuration list for PBXNativeTarget "NotAnotherSpaceShooter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				152F5467158BAD790074B693 /* Debug */,

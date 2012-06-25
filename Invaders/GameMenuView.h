@@ -28,6 +28,11 @@
     UIButton *helpButton;
     UIButton *Creditsbutton;
     
+    //message
+    UIImageView *message;
+    UILabel *messageLabel;
+    UIButton *messageButton[2];
+    
     SystemSoundID SayInvaders;
 }
 -(void)GameStartAnimation;

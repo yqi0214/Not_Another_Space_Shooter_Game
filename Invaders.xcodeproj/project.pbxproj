@@ -33,6 +33,7 @@
 		1539EA551598FC95001B51AB /* SinglePlayer1Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA521598FC95001B51AB /* SinglePlayer1Button.png */; };
 		1539EA561598FC95001B51AB /* SinglePlayer2Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA531598FC95001B51AB /* SinglePlayer2Button.png */; };
 		1539EA571598FC95001B51AB /* TwoPlayerButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA541598FC95001B51AB /* TwoPlayerButton.png */; };
+		1539EA6615992B3A001B51AB /* Icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1539EA6515992B3A001B51AB /* Icon2.png */; };
 		15597940158FA37E0024F600 /* Fly.png in Resources */ = {isa = PBXBuildFile; fileRef = 1559793F158FA37E0024F600 /* Fly.png */; };
 		15597944158FA6430024F600 /* Ninja.png in Resources */ = {isa = PBXBuildFile; fileRef = 15597942158FA6430024F600 /* Ninja.png */; };
 		15597945158FA6430024F600 /* Tank.png in Resources */ = {isa = PBXBuildFile; fileRef = 15597943158FA6430024F600 /* Tank.png */; };
@@ -64,7 +65,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		152F544E158BAD790074B693 /* Not Another Invader Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Not Another Invader Game.app"; path = NotAnotherSpaceShooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		152F544E158BAD790074B693 /* NotAnotherSpaceShooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotAnotherSpaceShooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		152F5452158BAD790074B693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		152F5454158BAD790074B693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		152F5456158BAD790074B693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -96,6 +97,7 @@
 		1539EA521598FC95001B51AB /* SinglePlayer1Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SinglePlayer1Button.png; sourceTree = "<group>"; };
 		1539EA531598FC95001B51AB /* SinglePlayer2Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SinglePlayer2Button.png; sourceTree = "<group>"; };
 		1539EA541598FC95001B51AB /* TwoPlayerButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwoPlayerButton.png; sourceTree = "<group>"; };
+		1539EA6515992B3A001B51AB /* Icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon2.png; sourceTree = "<group>"; };
 		1559793F158FA37E0024F600 /* Fly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fly.png; sourceTree = "<group>"; };
 		15597942158FA6430024F600 /* Ninja.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ninja.png; sourceTree = "<group>"; };
 		15597943158FA6430024F600 /* Tank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tank.png; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		152F5443158BAD790074B693 = {
 			isa = PBXGroup;
 			children = (
+				1539EA6515992B3A001B51AB /* Icon2.png */,
 				1559798D1593B5080024F600 /* Icon.png */,
 				152F5458158BAD790074B693 /* Invaders */,
 				152F5451158BAD790074B693 /* Frameworks */,
@@ -157,7 +160,7 @@
 		152F544F158BAD790074B693 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				152F544E158BAD790074B693 /* Not Another Invader Game.app */,
+				152F544E158BAD790074B693 /* NotAnotherSpaceShooter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -301,7 +304,7 @@
 			);
 			name = NotAnotherSpaceShooter;
 			productName = Invaders;
-			productReference = 152F544E158BAD790074B693 /* Not Another Invader Game.app */;
+			productReference = 152F544E158BAD790074B693 /* NotAnotherSpaceShooter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -377,6 +380,7 @@
 				1539EA551598FC95001B51AB /* SinglePlayer1Button.png in Resources */,
 				1539EA561598FC95001B51AB /* SinglePlayer2Button.png in Resources */,
 				1539EA571598FC95001B51AB /* TwoPlayerButton.png in Resources */,
+				1539EA6615992B3A001B51AB /* Icon2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +419,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -430,7 +435,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -440,6 +447,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -449,7 +457,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -458,10 +468,14 @@
 		152F5467158BAD790074B693 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Invaders/Invaders-Prefix.pch";
 				INFOPLIST_FILE = "Invaders/Invaders-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -470,10 +484,14 @@
 		152F5468158BAD790074B693 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Invaders/Invaders-Prefix.pch";
 				INFOPLIST_FILE = "Invaders/Invaders-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

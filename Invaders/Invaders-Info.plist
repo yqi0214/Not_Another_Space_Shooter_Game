@@ -15,11 +15,16 @@
 			<key>CFBundleIconFiles</key>
 			<array>
 				<string>Icon.png</string>
+				<string>Icon.png</string>
+				<string>Icon.png</string>
+				<string>Icon.png</string>
+				<string>Icon.png</string>
+				<string>Icon2.png</string>
 			</array>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>Yangfan-Qi.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>Qi.Yangfan.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

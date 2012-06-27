@@ -445,6 +445,7 @@
     
     //summon new invader if tap in the dropzon
     if(CGRectContainsPoint(DropZone.frame, touchLocation)){
+        
         if(player2invaderselect ==Fly && player2Energy < 10){
             return;
         }
@@ -452,7 +453,7 @@
             return;
             
         }
-        else if(player2invaderselect ==Ram && player2Energy < 20){
+        else if(player2invaderselect ==Rammer && player2Energy < 30){
             return;
             
         }
@@ -460,6 +461,7 @@
             return;
             
         }
+    
         
         bool NoOneThere = TRUE;
         for(int i =0; i < TotalInvadersAvailable; i++)
@@ -472,23 +474,27 @@
                     NSLog(@"New Invader");
                     
                     [Player2InvaderData[i] ActiveAndChangeTypeTo:player2invaderselect];
+                    //spend energy
+                    player2Energy -= Player2InvaderData[i].EnergyCost;
+                    
+                    //change image base on ship type
                     if(Player2InvaderData[i].Type ==Fly){
-                        player2Energy -= 10;
+                       // player2Energy -= 10;
                         Player2Invaders[i].image = FlyImage;
                         Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
                     }
                     else if(Player2InvaderData[i].Type ==Ninja){
-                        player2Energy -= 50;
+                       // player2Energy -= 50;
                         Player2Invaders[i].image = NinjaImage;
                         Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
                     }
-                    else if(Player2InvaderData[i].Type ==Ram){
-                        player2Energy -= 30;
+                    else if(Player2InvaderData[i].Type ==Rammer){
+                      //  player2Energy -= 30;
                         Player2Invaders[i].image = RamImage;
                         Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
                     }
                     else if(Player2InvaderData[i].Type ==Tank){
-                        player2Energy -= 50;
+                        //player2Energy -= 50;
                         Player2Invaders[i].image = TankImage;
                         Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
                     }
@@ -645,7 +651,7 @@
                     Player2InvaderData[j].Active = FALSE;
                     //play sounds
                     AudioServicesPlaySystemSound(InvaderDestroy);
-                    
+                    /*
                     if(Player2InvaderData[j].Type==Fly)
                         Player2Reinforcement -= 1;
                     else if(Player2InvaderData[j].Type == Ram)
@@ -654,6 +660,8 @@
                         Player2Reinforcement -= 3;
                     else if(Player2InvaderData[j].Type == Ninja)
                         Player2Reinforcement -= 5;
+                     */
+                    Player2Reinforcement -= Player2InvaderData[j].DamageIfKilled;
                 }
             }
         }
@@ -672,7 +680,7 @@
     for(int i =0; i < TotalInvadersAvailable; i++){
         if(Player2InvaderData[i].Active){
             int randmove =0;
-            if(Player2InvaderData[i].Type==Ram){
+            if(Player2InvaderData[i].Type==Rammer){
                 
                 if(Fighter.center.x > Player2Invaders[i].center.x)
                     randmove = 1;
@@ -696,14 +704,18 @@
                 Player2Invaders[i].center = CGPointMake(-200, -200);
                 Player2InvaderData[i].Active = FALSE;
                 
+                /*
                 if(Player2InvaderData[i].Type==Fly)
                     Player1Reinforcement -= 1;
-                else if(Player2InvaderData[i].Type==Ram)
+                else if(Player2InvaderData[i].Type==Rammer)
                     Player1Reinforcement -= 20;
                 else if(Player2InvaderData[i].Type==Ninja)
                     Player1Reinforcement -= 10;
                 else if(Player2InvaderData[i].Type==Tank)
                     Player1Reinforcement -= 20;
+                 */
+                Player1Reinforcement -= Player2InvaderData[i].DamageIfCrush;
+                
                 //play sounds
                 AudioServicesPlaySystemSound(HitFighter);
             }
@@ -712,14 +724,19 @@
             if(Player2Invaders[i].frame.origin.y >1024-60){
                 Player2Invaders[i].center = CGPointMake(-200, -200);
                 Player2InvaderData[i].Active = FALSE;
+                
+                /*
                 if(Player2InvaderData[i].Type==Fly)
                     Player1Reinforcement -= 2;
-                else if(Player2InvaderData[i].Type==Ram)
+                else if(Player2InvaderData[i].Type==Rammer)
                     Player1Reinforcement -= 2;
                 else if(Player2InvaderData[i].Type==Ninja)
                     Player1Reinforcement -= 5;
                 else if(Player2InvaderData[i].Type==Tank)
                     Player1Reinforcement -= 3;
+                */
+                Player1Reinforcement -= Player2InvaderData[i].DamageIfPass;
+                
                 //play sounds
                 AudioServicesPlaySystemSound(InvaderCrossThrough);
             }
@@ -852,7 +869,7 @@
         if(rand==0)
             player2invaderselect = Fly;
         else if(rand ==1)
-            player2invaderselect = Ram;
+            player2invaderselect = Rammer;
         else if(rand ==2)
             player2invaderselect = Tank;
         else
@@ -863,7 +880,7 @@
         if(rand==0)
             player2invaderselect = Fly;
         else if(rand ==1)
-            player2invaderselect = Ram;
+            player2invaderselect = Rammer;
         else if(rand ==2)
             return;
     }
@@ -893,7 +910,7 @@
                 Player2Invaders[i].image = NinjaImage;
                 Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
             }
-            else if(Player2InvaderData[i].Type ==Ram){
+            else if(Player2InvaderData[i].Type ==Rammer){
                 player2Energy -= 30;
                 Player2Invaders[i].image = RamImage;
                 Player2Invaders[i].frame = CGRectMake(0, 0, Player2Invaders[i].image.size.width, Player2Invaders[i].image.size.width);
@@ -939,9 +956,9 @@
     }
     else{
         if (Fighter.center.x > 60+Fighter.image.size.width/2 && Player2Invaders[target].center.x<Fighter.center.x)
-            Fighter.center = CGPointMake(Fighter.center.x-6, Fighter.center.y);
+            Fighter.center = CGPointMake(Fighter.center.x-5, Fighter.center.y);
         if(Fighter.center.x < 708-Fighter.image.size.width/2 && Player2Invaders[target].center.x>Fighter.center.x)
-            Fighter.center = CGPointMake(Fighter.center.x+6, Fighter.center.y);
+            Fighter.center = CGPointMake(Fighter.center.x+5, Fighter.center.y);
         
         if(currentTime-previousTime >0.2 &&player1Energy>10 && Player2Invaders[target].image.size.width/2 > abs(Player2Invaders[target].center.x-Fighter.center.x)){
             previousTime = currentTime;

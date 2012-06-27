@@ -13,6 +13,10 @@
     int Type;
     int HP;
     int Speed;
+    int EnergyCost;
+    int DamgeIfPass;
+    int DamgeIfCrush;
+    int DamageIfKilled;
 }
 -(id)initWithType:(int)type;
 -(void)ActiveAndChangeTypeTo:(int)type;
@@ -21,4 +25,8 @@
 @property (nonatomic,assign) int Type;
 @property (nonatomic,assign) int HP;
 @property (nonatomic,assign) int Speed;
+@property (nonatomic,assign) int EnergyCost;
+@property (nonatomic,assign) int DamageIfPass;
+@property (nonatomic,assign) int DamageIfCrush;
+@property (nonatomic,assign) int DamageIfKilled;
 @end

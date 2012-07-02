@@ -325,7 +325,7 @@
     //Player1MoveArrow[0].hidden = true;
     //Player1MoveArrow[1].hidden = true;
     Player1Pad.hidden = true;
-    
+    player1PadActive = false;
     
     // [self NewGame];
     
@@ -359,9 +359,16 @@
         toggleControl.hidden = true;
     }
     else{
-        Player1MoveArrow[0].hidden = false;
-        Player1MoveArrow[1].hidden = false;
-        Player1Pad.hidden = true;
+        if(player1PadActive){
+            Player1MoveArrow[0].hidden = true;
+            Player1MoveArrow[1].hidden = true;
+            Player1Pad.hidden = false;
+        }
+        else{
+            Player1MoveArrow[0].hidden = false;
+            Player1MoveArrow[1].hidden = false;
+            Player1Pad.hidden = true;
+        }
         Player1FireButton.hidden = false;
         Player1AltFireButton.hidden = false;
         toggleControl.hidden = false;
@@ -842,11 +849,13 @@
         Player1MoveArrow[0].hidden = false;
         Player1MoveArrow[1].hidden = false;
         Player1Pad.hidden = true;
+        player1PadActive = false;
     }
     else{
         Player1MoveArrow[0].hidden = TRUE;
         Player1MoveArrow[1].hidden = TRUE;
         Player1Pad.hidden = false; 
+        player1PadActive = true;
     }
 }
 -(void)ShowWinner{

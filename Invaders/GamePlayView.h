@@ -38,6 +38,8 @@
     UIButton *Player1AltFireButton;
     UIImageView *Player1Pad;
     CGPoint Player1PadOriginPoint;
+    BOOL player1PadActive;
+    
     
     
     //reinforcement bars

@@ -32,12 +32,12 @@
     
     
     gameTitle = [[UILabel alloc]init];
-    gameTitle.frame = CGRectMake(0, 0, 550, 50);
+    gameTitle.frame = CGRectMake(0, 0, 600, 50);
     gameTitle.center = CGPointMake(768/2, 50);
     gameTitle.textColor = [UIColor whiteColor];
     gameTitle.backgroundColor = [UIColor clearColor];
-    gameTitle.font = [UIFont boldSystemFontOfSize:40];
-    gameTitle.text = @"Not Another Space Shooter";
+    gameTitle.font = [UIFont boldSystemFontOfSize:30];
+    gameTitle.text = @"Not Another Space Shooter Game";
     [self.view addSubview:gameTitle];
     [gameTitle release];
     
@@ -202,6 +202,7 @@
     messageButton[2].hidden = false;
     messageButton[3].hidden = false;
     
+    [self HideAllButton];
     /* 
      }
      else{
@@ -300,6 +301,7 @@
     messageButton[1].hidden = true;
     messageButton[2].hidden = true;
     messageButton[3].hidden = true;
+    [self ShowAllButton];
 }
 
 

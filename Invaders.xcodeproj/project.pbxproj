@@ -65,7 +65,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		152F544E158BAD790074B693 /* NotAnotherSpaceShooter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotAnotherSpaceShooter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		152F544E158BAD790074B693 /* NotAnotherSpaceShooterGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotAnotherSpaceShooterGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		152F5452158BAD790074B693 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		152F5454158BAD790074B693 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		152F5456158BAD790074B693 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -160,7 +160,7 @@
 		152F544F158BAD790074B693 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				152F544E158BAD790074B693 /* NotAnotherSpaceShooter.app */,
+				152F544E158BAD790074B693 /* NotAnotherSpaceShooterGame.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -290,9 +290,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		152F544D158BAD790074B693 /* NotAnotherSpaceShooter */ = {
+		152F544D158BAD790074B693 /* NotAnotherSpaceShooterGame */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 152F5466158BAD790074B693 /* Build configuration list for PBXNativeTarget "NotAnotherSpaceShooter" */;
+			buildConfigurationList = 152F5466158BAD790074B693 /* Build configuration list for PBXNativeTarget "NotAnotherSpaceShooterGame" */;
 			buildPhases = (
 				152F544A158BAD790074B693 /* Sources */,
 				152F544B158BAD790074B693 /* Frameworks */,
@@ -302,9 +302,9 @@
 			);
 			dependencies = (
 			);
-			name = NotAnotherSpaceShooter;
+			name = NotAnotherSpaceShooterGame;
 			productName = Invaders;
-			productReference = 152F544E158BAD790074B693 /* NotAnotherSpaceShooter.app */;
+			productReference = 152F544E158BAD790074B693 /* NotAnotherSpaceShooterGame.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -327,7 +327,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				152F544D158BAD790074B693 /* NotAnotherSpaceShooter */,
+				152F544D158BAD790074B693 /* NotAnotherSpaceShooterGame */,
 			);
 		};
 /* End PBXProject section */
@@ -419,8 +419,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -448,8 +448,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -470,8 +470,8 @@
 		152F5467158BAD790074B693 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Invaders/Invaders-Prefix.pch";
 				INFOPLIST_FILE = "Invaders/Invaders-Info.plist";
@@ -487,8 +487,8 @@
 		152F5468158BAD790074B693 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Invaders/Invaders-Prefix.pch";
 				INFOPLIST_FILE = "Invaders/Invaders-Info.plist";
@@ -513,7 +513,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		152F5466158BAD790074B693 /* Build configuration list for PBXNativeTarget "NotAnotherSpaceShooter" */ = {
+		152F5466158BAD790074B693 /* Build configuration list for PBXNativeTarget "NotAnotherSpaceShooterGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				152F5467158BAD790074B693 /* Debug */,
